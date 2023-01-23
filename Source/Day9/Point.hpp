@@ -15,7 +15,7 @@ namespace AdventOfCode
         {
         }
 
-        virtual ~Point() = default;
+        virtual ~Point() {};
 
         constexpr Point(int x1, int y1)
         : x{x1}
