@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+# Local files
+.cache
+.vs
+.vscode
+build
+*.cmake
+CMakeCache.txt
+install_manifest.txt
