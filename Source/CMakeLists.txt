@@ -48,6 +48,9 @@ add_executable (
 	"Day11/Day11.cpp"
 	"Day12.h"
 	"Day12.cpp"
+    "Day13/Packet.hpp"
+	"Day13/Day13.h"
+	"Day13/Day13.cpp"
 )
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
@@ -68,6 +71,7 @@ install(FILES ../InputFiles/day9input.txt DESTINATION bin)
 install(FILES ../InputFiles/day10input.txt DESTINATION bin)
 install(FILES ../InputFiles/day11input.txt DESTINATION bin)
 install(FILES ../InputFiles/day12input.txt DESTINATION bin)
+install(FILES ../InputFiles/day13input.txt DESTINATION bin)
 
 enable_testing()
 
@@ -90,5 +94,6 @@ do_test(AdventOfCode2022 9 ../../InputFiles/day9input.txt "  Task1: 6057\n  Task
 do_test(AdventOfCode2022 10 ../../InputFiles/day10input.txt "  Task1: 14060")
 do_test(AdventOfCode2022 11 ../../InputFiles/day11input.txt "  Task1: 76728\n  Task2: 21553910156")
 do_test(AdventOfCode2022 12 ../../InputFiles/day12input.txt "  Task1: 391\n  Task2: 386")
+do_test(AdventOfCode2022 13 ../../InputFiles/day13input.txt "  Task1: 6623\n  Task2: 23049")
 
 
