@@ -35,6 +35,11 @@ namespace AdventOfCode
             return areValuesEqual && areListsEqual;
         }
 
+        void AppendValue(uint8_t value)
+        {
+            m_values[m_maxIndex++] = value;
+        }
+
         void AddValue(int index, uint8_t value)
         {
             m_values[index] = value;
@@ -45,9 +50,14 @@ namespace AdventOfCode
             }
         }
 
-        void AddList(int index, const Packet& el)
+        void AppendList(const Packet& packet)
         {
-            m_lists[index] = el;
+            m_lists[m_maxIndex++] = packet;
+        }
+
+        void AddList(int index, const Packet& packet)
+        {
+            m_lists[index] = packet;
 
             if (index > m_maxIndex)
             {
@@ -58,11 +68,6 @@ namespace AdventOfCode
         Packet* GetParent() const
         {
             return m_parent;
-        }
-
-        std::map<int, Packet> GetElements() const
-        {
-            return m_lists;
         }
 
         int GetMaxIndex() const

@@ -86,7 +86,6 @@ namespace AdventOfCode
 
     void Day13::GetPacket(Packet* root, std::string_view text, int& charIndex)
     {
-        int packetIndex = 0;
         std::string value;
 
         while (charIndex < text.size())
@@ -97,7 +96,7 @@ namespace AdventOfCode
                 Packet newRoot(root);
                 GetPacket(&newRoot, text, ++charIndex);
                 
-                root->AddList(packetIndex, newRoot);
+                root->AppendList(newRoot);
 
                 if (charIndex >= text.size() - 1)
                 {
@@ -112,18 +111,16 @@ namespace AdventOfCode
             {
                 if (!value.empty())
                 {
-                    root->AddValue(packetIndex, std::stoi(value));
+                    root->AppendValue(std::stoi(value));
                     value.clear();
                 }
-
-                ++packetIndex;
             }
 
             if (currentChar == ']')
             {
                 if (!value.empty())
                 {
-                    root->AddValue(packetIndex, std::stoi(value));
+                    root->AppendValue(std::stoi(value));
                     value.clear();
                 }
 
