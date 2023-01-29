@@ -67,7 +67,7 @@ namespace AdventOfCode
 
 			for (size_t i = 0; i < line.length(); i++)
 			{
-				m_map.AppendTree(static_cast<TreeHeight>(line[i] - '0'));
+				m_map.AppendValue(static_cast<TreeHeight>(line[i] - '0'));
 			}
 		}
 	}

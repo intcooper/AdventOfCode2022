@@ -70,6 +70,9 @@ int main(int argc, char* argv[])
         case 13:
 			task = std::make_unique<AdventOfCode::Day13>(inputFile);
 			break;
+        case 14:
+			task = std::make_unique<AdventOfCode::Day14>(inputFile);
+			break;
 	}
     
 	task->Run();

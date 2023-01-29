@@ -51,6 +51,8 @@ add_executable (
     "Day13/Packet.hpp"
 	"Day13/Day13.h"
 	"Day13/Day13.cpp"
+	"Day14.h"
+	"Day14.cpp"
 )
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)

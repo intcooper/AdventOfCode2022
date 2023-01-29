@@ -38,9 +38,12 @@ namespace AdventOfCode
 			m_map.emplace_back();
 		};
 
-		void AppendTree(ValueType height)
+        /// <summary>
+        /// Appends a value to the current row.
+        /// </summary>
+		void AppendValue(ValueType value)
 		{
-			m_map.rbegin()->push_back(height);
+			m_map.rbegin()->push_back(value);
 		}
 
 		size_t Rows() const
@@ -53,14 +56,24 @@ namespace AdventOfCode
 			return m_map[0].size(); // assuming that all the rows have the same number of columns
 		}
 
-		ValueType Get(size_t treeRow, size_t treeCol) const
+		ValueType Get(size_t row, size_t column) const
 		{
-			if ((treeRow >= m_map.size()) || (treeCol >= m_map[0].size()))
+			if ((row >= m_map.size()) || (column >= m_map[0].size()))
 			{
 				return -1;
 			}
 
-			return m_map[treeRow][treeCol];
+			return m_map[row][column];
+		}
+
+		void Set(size_t row, size_t column, ValueType value)
+		{
+			if ((row >= m_map.size()) || (column >= m_map[0].size()))
+			{
+				return;
+			}
+
+			m_map[row][column] = value;
 		}
 
 	private:
