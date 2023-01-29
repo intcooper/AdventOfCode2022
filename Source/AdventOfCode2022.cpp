@@ -66,6 +66,7 @@ int main(int argc, char* argv[])
 			break;		
         case 12:
 			task = std::make_unique<AdventOfCode::Day12>(inputFile);
+            break;
         case 13:
 			task = std::make_unique<AdventOfCode::Day13>(inputFile);
 			break;
