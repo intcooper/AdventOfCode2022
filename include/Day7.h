@@ -7,23 +7,23 @@
 
 namespace AdventOfCode
 {
-	class Day7 : public DailyTask
-	{
-	public:
-		Day7(std::string inputFileName);
+class Day7 : public DailyTask
+{
+  public:
+    Day7(std::string inputFileName);
 
-		inline virtual std::string GetTitle() const override
-		{
-			return "Day 7 - No Space Left On Device";
-		}
+    inline virtual std::string GetTitle() const override
+    {
+        return "Day 7 - No Space Left On Device";
+    }
 
-		virtual void Task1() override;
-		virtual void Task2() override;
+    virtual void Task1() override;
+    virtual void Task2() override;
 
-	private:
-		Directory m_fsRoot;
+  private:
+    Directory m_fsRoot;
 
-		std::string PrintFs(Directory* root) const;
-		void ParseInputFile();
-	};
+    std::string PrintFs(Directory *root) const;
+    void ParseInputFile();
+};
 }
