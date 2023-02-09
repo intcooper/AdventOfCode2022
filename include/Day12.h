@@ -1,7 +1,7 @@
 #pragma once
 
 #include "DailyTask.h"
-#include "Day9/Point.hpp"
+#include "Point.hpp"
 
 #include <stdint.h>
 #include <string>

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../DailyTask.h"
+#include "DailyTask.h"
 #include "Grid.h"
 
 namespace AdventOfCode

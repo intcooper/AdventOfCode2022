@@ -11,5 +11,5 @@ project ("AdventOfCode2022" VERSION 1.0)
 enable_testing()
 
 # Include sub-projects.
-add_subdirectory ("Source")
+add_subdirectory ("src")
 

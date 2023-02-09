@@ -1,6 +1,6 @@
 #include "Day9.h"
 
-#include "../Utils.hpp"
+#include "Utils.hpp"
 
 namespace AdventOfCode
 {

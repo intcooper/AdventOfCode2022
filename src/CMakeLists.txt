@@ -17,43 +17,24 @@ target_compile_options(adventofcode2022_compiler_flags INTERFACE
 add_executable (
 	AdventOfCode2022 
 	"AdventOfCode2022.cpp"
-	"AdventOfCode2022.h"
-	"Utils.hpp"
-	"Day1.h"
 	"Day1.cpp"
-	"Day2.h"
 	"Day2.cpp"
-	"Day3.h"
 	"Day3.cpp"
-	"Day4.h"
 	"Day4.cpp"
-	"Day5.h"
 	"Day5.cpp"
-	"Day6.h"
 	"Day6.cpp"
-	"Day7/Day7.h"
-	"Day7/Day7.cpp"
-	"Day7/Directory.h"
-	"Day7/File.h"
-	"Day7/Directory.cpp"
-	"Day8/Day8.h"
-	"Day8/Day8.cpp"
-	"Day8/Grid.h"
-	"Day9/Day9.h"
-	"Day9/Day9.cpp"
-	"Day10.h"
+	"Day7.cpp"
+	"Directory.cpp"
+	"Day8.cpp"
+	"Day9.cpp"
 	"Day10.cpp"
-	"Day11/Monkey.h"
-	"Day11/Day11.h"
-	"Day11/Day11.cpp"
-	"Day12.h"
+	"Day11.cpp"
 	"Day12.cpp"
-    "Day13/Packet.hpp"
-	"Day13/Day13.h"
-	"Day13/Day13.cpp"
-	"Day14.h"
+	"Day13.cpp"
 	"Day14.cpp"
 )
+
+target_include_directories(AdventOfCode2022 PRIVATE ../include)
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET AdventOfCode2022 PROPERTY CXX_STANDARD 20)
@@ -61,19 +42,20 @@ endif()
 
 
 install(TARGETS AdventOfCode2022 DESTINATION bin)
-install(FILES ../InputFiles/day1input.txt DESTINATION bin)
-install(FILES ../InputFiles/day2input.txt DESTINATION bin)
-install(FILES ../InputFiles/day3input.txt DESTINATION bin)
-install(FILES ../InputFiles/day4input.txt DESTINATION bin)
-install(FILES ../InputFiles/day5input.txt DESTINATION bin)
-install(FILES ../InputFiles/day6input.txt DESTINATION bin)
-install(FILES ../InputFiles/day7input.txt DESTINATION bin)
-install(FILES ../InputFiles/day8input.txt DESTINATION bin)
-install(FILES ../InputFiles/day9input.txt DESTINATION bin)
-install(FILES ../InputFiles/day10input.txt DESTINATION bin)
-install(FILES ../InputFiles/day11input.txt DESTINATION bin)
-install(FILES ../InputFiles/day12input.txt DESTINATION bin)
-install(FILES ../InputFiles/day13input.txt DESTINATION bin)
+install(FILES ../res/day1input.txt DESTINATION bin)
+install(FILES ../res/day2input.txt DESTINATION bin)
+install(FILES ../res/day3input.txt DESTINATION bin)
+install(FILES ../res/day4input.txt DESTINATION bin)
+install(FILES ../res/day5input.txt DESTINATION bin)
+install(FILES ../res/day6input.txt DESTINATION bin)
+install(FILES ../res/day7input.txt DESTINATION bin)
+install(FILES ../res/day8input.txt DESTINATION bin)
+install(FILES ../res/day9input.txt DESTINATION bin)
+install(FILES ../res/day10input.txt DESTINATION bin)
+install(FILES ../res/day11input.txt DESTINATION bin)
+install(FILES ../res/day12input.txt DESTINATION bin)
+install(FILES ../res/day13input.txt DESTINATION bin)
+install(FILES ../res/day14input.txt DESTINATION bin)
 
 enable_testing()
 
@@ -97,5 +79,4 @@ do_test(AdventOfCode2022 10 ../../InputFiles/day10input.txt "  Task1: 14060")
 do_test(AdventOfCode2022 11 ../../InputFiles/day11input.txt "  Task1: 76728\n  Task2: 21553910156")
 do_test(AdventOfCode2022 12 ../../InputFiles/day12input.txt "  Task1: 391\n  Task2: 386")
 do_test(AdventOfCode2022 13 ../../InputFiles/day13input.txt "  Task1: 6623\n  Task2: 23049")
-
-
+do_test(AdventOfCode2022 14 ../../InputFiles/day14input.txt "  Task1: 964\n  Task2: 32041")

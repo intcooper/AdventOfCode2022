@@ -1,8 +1,8 @@
 #pragma once
 
 #include "DailyTask.h"
-#include "Day8/Grid.h"
-#include "Day9/Point.hpp"
+#include "Grid.h"
+#include "Point.hpp"
 
 #include <string>
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../DailyTask.h"
+#include "DailyTask.h"
 #include "Monkey.h"
 
 #include <string>
