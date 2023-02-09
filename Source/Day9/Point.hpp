@@ -1,6 +1,7 @@
 #pragma once
 
 #include <algorithm>
+#include <ostream>
 
 namespace AdventOfCode
 {
@@ -57,6 +58,16 @@ namespace AdventOfCode
 			return !operator==(other);
 		}
 
+		constexpr Point operator -(const Point& other) const
+		{
+			return { this->x - other.x, this->y - other.y };
+		}
+
+		constexpr Point operator +(const Point& other) const
+		{
+			return { this->x + other.x, this->y + other.y };
+		}
+
 		constexpr Point operator *(const int& i) const
 		{
 			return { this->x * i, this->y * i };
@@ -88,5 +99,13 @@ namespace AdventOfCode
 		{
 			return { this->x - other.x, this->y - other.y };
 		}
+
 	};
+
+    constexpr std::ostream& operator<<(std::ostream& out, const Point& p)
+    {
+        return out << '(' << p.x << ',' << p.y << ')';
+    }
+
 }
+

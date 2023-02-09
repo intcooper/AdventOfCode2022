@@ -1,9 +1,9 @@
 #pragma once
 
 #include <numeric>
+#include <optional>
 #include <vector>
 #include <algorithm>
-
 #include <iterator>
 
 namespace AdventOfCode
@@ -56,11 +56,11 @@ namespace AdventOfCode
 			return m_map[0].size(); // assuming that all the rows have the same number of columns
 		}
 
-		ValueType Get(size_t row, size_t column) const
+		std::optional<ValueType> Get(size_t row, size_t column) const
 		{
 			if ((row >= m_map.size()) || (column >= m_map[0].size()))
 			{
-				return -1;
+				return std::nullopt;
 			}
 
 			return m_map[row][column];
@@ -75,6 +75,51 @@ namespace AdventOfCode
 
 			m_map[row][column] = value;
 		}
+
+        void SetSize(size_t rows, size_t columns, ValueType filler = ValueType{})
+        {
+            m_map.clear();
+
+            for (int x = 0; x < rows; ++x)
+            {
+                m_map.emplace_back();
+
+                for (int y = 0; y < columns; ++y)
+                {
+                    m_map.back().emplace_back(filler);
+                }
+            }
+        }
+
+        void Resize(size_t rows, size_t columns, ValueType filler = ValueType{})
+        {
+            std::vector<std::vector<ValueType>> newMap;
+
+            for (int x = 0; x < rows; ++x)
+            {
+                newMap.emplace_back();
+
+                for (int y = 0; y < columns; ++y)
+                {
+                    newMap.back().emplace_back(filler);
+                }
+            }
+
+            int minY = std::min(newMap.size(), m_map.size());
+            int minX = std::min(newMap[0].size(), m_map[0].size());
+            int offsetY = 0; // std::abs(static_cast<int>(newMap.size()) - static_cast<int>(m_map.size())) / 2; // centered
+            int offsetX = std::abs(static_cast<int>(newMap[0].size()) - static_cast<int>(m_map[0].size())) / 2; // centered
+
+            for (int y = 0; y < minY; ++y)
+            {
+                for (int x = 0; x < minX; ++x)
+                {
+                    newMap[y + offsetY][x + offsetX] = m_map[y][x];
+                }
+            }
+
+            m_map = newMap;
+        }
 
 	private:
 		std::vector<std::vector<ValueType>> m_map;

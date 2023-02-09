@@ -1,6 +1,10 @@
 #pragma once
 
 #include "DailyTask.h"
+#include "Day8/Grid.h"
+#include "Day9/Point.hpp"
+
+#include <string>
 
 namespace AdventOfCode
 {
@@ -18,5 +22,14 @@ namespace AdventOfCode
 		virtual void Task2() override;
 
 	private:
+        Grid<char> m_map;
+        Point m_minPoint{500, 0}; 
+        Point m_maxPoint{0, 0}; 
+        Point m_sandUnit{500, 0};
+
+        void PlotSegment(const Point& start, const Point& end);
+        void PrintMap(const Point& source);
+        void ParseInputFile();
+        int DropSand(Point source);
 	};
 }
