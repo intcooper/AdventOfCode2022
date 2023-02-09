@@ -64,7 +64,7 @@ class Rope
         }
     }
 
-    const std::set<Point> &GetVisited() const
+    const std::set<Point>& GetVisited() const
     {
         return m_visited;
     }

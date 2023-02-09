@@ -45,7 +45,7 @@ void Day10::RunTask(std::function<void()> task)
     {
         auto parts = Utils::Split(line, ' ');
 
-        const auto &command = parts[0];
+        const auto& command = parts[0];
 
         if (command == "addx")
         {

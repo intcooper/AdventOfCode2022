@@ -27,8 +27,8 @@ class Day14 : public DailyTask
     Point m_maxPoint{0, 0};
     Point m_sandUnit{500, 0};
 
-    void PlotSegment(const Point &start, const Point &end);
-    void PrintMap(const Point &source);
+    void PlotSegment(const Point& start, const Point& end);
+    void PrintMap(const Point& source);
     void ParseInputFile();
     int DropSand(Point source);
 };

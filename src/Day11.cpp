@@ -25,7 +25,7 @@ void Day11::Task2()
     ParseInputFile();
 
     uint64_t common_multiple{1};
-    for (auto &m : m_monkeys)
+    for (auto& m : m_monkeys)
     {
         common_multiple *= m.GetTestDivisor();
     }
@@ -38,7 +38,7 @@ void Day11::RunTask(int numOfRounds,
 {
     for (int i = 0; i < numOfRounds; ++i)
     {
-        for (auto &m : m_monkeys)
+        for (auto& m : m_monkeys)
         {
             m.InspectItems(reduceWorry);
         }
@@ -46,7 +46,7 @@ void Day11::RunTask(int numOfRounds,
 
     std::vector<uint64_t> inspections;
 
-    for (auto &m : m_monkeys)
+    for (auto& m : m_monkeys)
     {
         inspections.emplace_back(m.GetTotalInspections());
     }
@@ -123,7 +123,7 @@ void Day11::ParseInputFile()
         {
             auto subparts = Utils::Split(parts[1], ' ');
             onTestPositive = std::bind(
-                [&m_monkeys = m_monkeys](auto worry, auto monkeyId) {
+                [& m_monkeys = m_monkeys](auto worry, auto monkeyId) {
                     m_monkeys[monkeyId].AddItem(worry);
                 },
                 std::placeholders::_1, std::stoi(subparts[4].data()));
@@ -135,7 +135,7 @@ void Day11::ParseInputFile()
         {
             auto subparts = Utils::Split(parts[1], ' ');
             onTestNegative = std::bind(
-                [&m_monkeys = m_monkeys](auto worry, auto monkeyId) {
+                [& m_monkeys = m_monkeys](auto worry, auto monkeyId) {
                     m_monkeys[monkeyId].AddItem(worry);
                 },
                 std::placeholders::_1, std::stoi(subparts[4].data()));

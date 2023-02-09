@@ -23,7 +23,7 @@ class Day13 : public DailyTask
 
   private:
     Packet TextToPacket(std::string_view text);
-    void GetPacket(Packet *root, std::string_view text, int &index);
-    std::optional<bool> ComparePackets(const Packet &left, const Packet &right);
+    void GetPacket(Packet* root, std::string_view text, int& index);
+    std::optional<bool> ComparePackets(const Packet& left, const Packet& right);
 };
 }

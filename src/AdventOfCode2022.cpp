@@ -5,7 +5,7 @@
 
 #include <optional>
 
-auto GetCommandLineParams(int argc, char *argv[])
+auto GetCommandLineParams(int argc, char* argv[])
 {
     return (argc > 1) 
     ? [&argc, &argv]()
@@ -16,7 +16,7 @@ auto GetCommandLineParams(int argc, char *argv[])
     : std::nullopt;
 }
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
     const auto params = GetCommandLineParams(argc, argv);
 

@@ -16,7 +16,7 @@ class Packet
     {
     }
 
-    explicit Packet(Packet *parent)
+    explicit Packet(Packet* parent)
         : m_values()
         , m_lists()
         , m_parent(parent)
@@ -24,7 +24,7 @@ class Packet
     {
     }
 
-    bool operator==(const Packet &other) const
+    bool operator==(const Packet& other) const
     {
         auto areValuesEqual = m_values.size() == other.m_values.size() &&
                               std::equal(m_values.begin(), m_values.end(),
@@ -52,12 +52,12 @@ class Packet
         }
     }
 
-    void AppendList(const Packet &packet)
+    void AppendList(const Packet& packet)
     {
         m_lists[m_maxIndex++] = packet;
     }
 
-    void AddList(int index, const Packet &packet)
+    void AddList(int index, const Packet& packet)
     {
         m_lists[index] = packet;
 
@@ -67,7 +67,7 @@ class Packet
         }
     }
 
-    Packet *GetParent() const
+    Packet* GetParent() const
     {
         return m_parent;
     }
@@ -92,7 +92,7 @@ class Packet
         return m_lists.contains(index);
     }
 
-    const Packet &GetList(int index) const
+    const Packet& GetList(int index) const
     {
         return m_lists.at(index);
     }
@@ -111,7 +111,7 @@ class Packet
   private:
     std::map<int, uint8_t> m_values;
     std::map<int, Packet> m_lists;
-    Packet *m_parent;
+    Packet* m_parent;
     int m_maxIndex;
 };
 }

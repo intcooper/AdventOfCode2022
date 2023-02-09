@@ -17,7 +17,7 @@ struct ElfAssignment
         end = std::stoi(assignmentparts[1].data());
     }
 
-    inline bool Includes(const ElfAssignment &other) const
+    inline bool Includes(const ElfAssignment& other) const
     {
         if ((this->start <= other.start) && (this->end >= other.end))
         {
@@ -27,7 +27,7 @@ struct ElfAssignment
         return false;
     }
 
-    inline bool Overlaps(const ElfAssignment &other) const
+    inline bool Overlaps(const ElfAssignment& other) const
     {
         if (this->Includes(other))
         {
@@ -43,7 +43,7 @@ struct ElfAssignment
     }
 };
 
-Day4::Day4(const std::string &inputFileName)
+Day4::Day4(const std::string& inputFileName)
     : DailyTask(inputFileName)
 {
 }

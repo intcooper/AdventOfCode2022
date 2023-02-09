@@ -69,7 +69,7 @@ void Day14::Task2()
     m_result = std::to_string(total_units);
 }
 
-void Day14::PlotSegment(const Point &start, const Point &end)
+void Day14::PlotSegment(const Point& start, const Point& end)
 {
     auto s = std::min(start, end);
     auto e = std::max(start, end);
@@ -83,7 +83,7 @@ void Day14::PlotSegment(const Point &start, const Point &end)
     }
 }
 
-void Day14::PrintMap(const Point &source)
+void Day14::PrintMap(const Point& source)
 {
 #ifdef PRINTMAP
     std::cout << '\n';
@@ -119,7 +119,7 @@ void Day14::ParseInputFile()
 
         const auto parts = Utils::Split(line, ' ');
 
-        for (const auto &p : parts)
+        for (const auto& p : parts)
         {
             if (p.starts_with("-"))
             {
@@ -146,7 +146,7 @@ void Day14::ParseInputFile()
     m_map.SetSize(m_maxPoint.y - m_minPoint.y + 1,
                   m_maxPoint.x - m_minPoint.x + 1, '.');
 
-    for (auto &p : points)
+    for (auto& p : points)
     {
         int i = 0;
 

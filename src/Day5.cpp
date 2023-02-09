@@ -45,8 +45,8 @@ void Day5::Task2()
         uint8_t from = std::stoi(line.substr(fromPos + 5, toPos - fromPos));
         uint8_t to = std::stoi(line.substr(toPos + 3, line.length() - toPos));
 
-        auto &stack_to = m_stacks[static_cast<size_t>(to) - 1];
-        auto &stack_from = m_stacks[static_cast<size_t>(from) - 1];
+        auto& stack_to = m_stacks[static_cast<size_t>(to) - 1];
+        auto& stack_from = m_stacks[static_cast<size_t>(from) - 1];
         stack_to.insert(stack_to.begin(), stack_from.begin(),
                         std::next(stack_from.begin(), count));
 

@@ -28,7 +28,7 @@ class Day12 : public DailyTask
     Point m_endPos;
     std::vector<Point> m_candidateStartPos;
 
-    std::vector<Point> Explore(const Point &start, const Point &end);
+    std::vector<Point> Explore(const Point& start, const Point& end);
     void ParseInputFile();
 };
 }

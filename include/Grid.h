@@ -25,8 +25,8 @@ template <class ValueType> class Grid
     template <class GridType> class RowIterator;
 
     using value_type = ValueType;
-    using pointer = ValueType *;
-    using reference = ValueType &;
+    using pointer = ValueType*;
+    using reference = ValueType&;
     using column_iterator = ColumnIterator<Grid<ValueType>>;
     using row_iterator = RowIterator<Grid<ValueType>>;
 
@@ -187,7 +187,7 @@ template <class ValueType> class Grid
         {
         }
 
-        GridIterator(GridType *ptr, difference_type column, difference_type row,
+        GridIterator(GridType* ptr, difference_type column, difference_type row,
                      bool isEnd) noexcept
             : m_map{ptr}
             , m_row{row}
@@ -222,20 +222,20 @@ template <class ValueType> class Grid
             return tmp;
         }
 
-        friend bool operator==(const GridIterator &a, const GridIterator &b)
+        friend bool operator==(const GridIterator& a, const GridIterator& b)
         {
             return (a.m_map == b.m_map) &&
                    ((a.m_isEnd && b.m_isEnd) ||
                     ((a.m_column == b.m_column) && (a.m_row == b.m_row)));
         };
 
-        friend bool operator!=(const GridIterator &a, const GridIterator &b)
+        friend bool operator!=(const GridIterator& a, const GridIterator& b)
         {
             return !operator==(a, b);
         };
 
       protected:
-        GridType *m_map;
+        GridType* m_map;
         difference_type m_row;
         difference_type m_column;
         bool m_isEnd;
@@ -250,7 +250,7 @@ template <class ValueType> class Grid
         {
         }
 
-        ColumnIterator(GridType *ptr,
+        ColumnIterator(GridType* ptr,
                        typename GridIterator<GridType>::difference_type column,
                        typename GridIterator<GridType>::difference_type row,
                        bool isEnd) noexcept
@@ -259,7 +259,7 @@ template <class ValueType> class Grid
         }
 
         // Prefix increment
-        ColumnIterator &operator++()
+        ColumnIterator& operator++()
         {
             if (!this->m_isEnd)
             {
@@ -277,7 +277,7 @@ template <class ValueType> class Grid
         }
 
         // Prefix decrement
-        ColumnIterator &operator--()
+        ColumnIterator& operator--()
         {
             if (!this->m_isEnd)
             {
@@ -310,7 +310,7 @@ template <class ValueType> class Grid
         {
         }
 
-        RowIterator(GridType *ptr,
+        RowIterator(GridType* ptr,
                     typename GridIterator<GridType>::difference_type row,
                     typename GridIterator<GridType>::difference_type column,
                     bool isEnd) noexcept
@@ -319,7 +319,7 @@ template <class ValueType> class Grid
         }
 
         // Prefix increment
-        RowIterator &operator++()
+        RowIterator& operator++()
         {
             if (!this->m_isEnd)
             {
@@ -337,7 +337,7 @@ template <class ValueType> class Grid
         }
 
         // Prefix decrement
-        RowIterator &operator--()
+        RowIterator& operator--()
         {
             if (!this->m_isEnd)
             {

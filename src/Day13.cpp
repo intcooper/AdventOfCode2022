@@ -86,7 +86,7 @@ void Day13::Task2()
     m_result = std::to_string(index1 * index2);
 }
 
-void Day13::GetPacket(Packet *root, std::string_view text, int &charIndex)
+void Day13::GetPacket(Packet* root, std::string_view text, int& charIndex)
 {
     std::string value;
 
@@ -138,8 +138,8 @@ void Day13::GetPacket(Packet *root, std::string_view text, int &charIndex)
     }
 }
 
-std::optional<bool> Day13::ComparePackets(const Packet &left,
-                                          const Packet &right)
+std::optional<bool> Day13::ComparePackets(const Packet& left,
+                                          const Packet& right)
 {
     const auto maxIndex = std::max(left.GetMaxIndex(), right.GetMaxIndex());
 

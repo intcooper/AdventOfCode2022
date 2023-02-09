@@ -7,7 +7,7 @@ namespace AdventOfCode
 class Day4 : public DailyTask
 {
   public:
-    Day4(const std::string &inputFileName);
+    Day4(const std::string& inputFileName);
 
     inline virtual std::string GetTitle() const override
     {

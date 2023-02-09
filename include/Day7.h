@@ -23,7 +23,7 @@ class Day7 : public DailyTask
   private:
     Directory m_fsRoot;
 
-    std::string PrintFs(Directory *root) const;
+    std::string PrintFs(Directory* root) const;
     void ParseInputFile();
 };
 }

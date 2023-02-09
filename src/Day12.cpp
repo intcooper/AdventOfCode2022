@@ -27,7 +27,7 @@ void Day12::Task2()
 
     ParseInputFile();
 
-    for (const auto &c : m_candidateStartPos)
+    for (const auto& c : m_candidateStartPos)
     {
         auto shortestPath = Explore(c, m_endPos);
         if ((shortestPath.size() > 0) &&
@@ -41,7 +41,7 @@ void Day12::Task2()
 }
 
 // A* path-finding algorithm
-std::vector<Point> Day12::Explore(const Point &start, const Point &end)
+std::vector<Point> Day12::Explore(const Point& start, const Point& end)
 {
     std::vector<Point> outPath;
 
@@ -56,10 +56,10 @@ std::vector<Point> Day12::Explore(const Point &start, const Point &end)
         {
         }
 
-        Node(const Node &) = default;
-        Node(Node &&) = default;
-        Node &operator=(const Node &) = default;
-        Node &operator=(Node &&) = default;
+        Node(const Node&) = default;
+        Node(Node&&) = default;
+        Node& operator=(const Node&) = default;
+        Node& operator=(Node&&) = default;
 
         Point point;
         Point parent;
@@ -82,7 +82,7 @@ std::vector<Point> Day12::Explore(const Point &start, const Point &end)
         uint32_t minimumDistance{UINT32_MAX};
         Point minimumDistancePoint;
 
-        for (const auto &p : open)
+        for (const auto& p : open)
         {
             if (p.second.f < minimumDistance)
             {
@@ -116,7 +116,7 @@ std::vector<Point> Day12::Explore(const Point &start, const Point &end)
             currentChar = 'a';
         }
 
-        for (const auto &d : validDirs)
+        for (const auto& d : validDirs)
         {
             Point next{currentNode.point};
             next += d;

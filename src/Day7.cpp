@@ -43,7 +43,7 @@ void Day7::Task2()
 
     uint32_t sizeOfDir = UINT32_MAX;
 
-    for (const auto &dir : dirs)
+    for (const auto& dir : dirs)
     {
         if (dir.second >= toBeFreed)
         {
@@ -59,7 +59,7 @@ void Day7::Task2()
 
 void Day7::ParseInputFile()
 {
-    Directory *currentDir = nullptr;
+    Directory* currentDir = nullptr;
 
     for (std::string line; std::getline(m_inputFile, line);)
     {
@@ -110,12 +110,12 @@ void Day7::ParseInputFile()
     }
 }
 
-std::string Day7::PrintFs(Directory *root) const
+std::string Day7::PrintFs(Directory* root) const
 {
     std::stringstream str;
 
     uint8_t levels{1};
-    Directory *tmp = root;
+    Directory* tmp = root;
 
     while (tmp->GetParent() != nullptr)
     {
@@ -125,13 +125,13 @@ std::string Day7::PrintFs(Directory *root) const
 
     str << std::string(levels - 1, '\t') << root->GetName() << "\n";
 
-    for (auto &f : root->m_files)
+    for (auto& f : root->m_files)
     {
         str << std::string(levels, '\t') << f->GetName() << "\t" << f->GetSize()
             << "\n";
     }
 
-    for (auto &d : root->m_directories)
+    for (auto& d : root->m_directories)
     {
         str << PrintFs(d.get());
     }
