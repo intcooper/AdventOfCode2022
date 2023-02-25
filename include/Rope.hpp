@@ -45,7 +45,7 @@ class Rope
 
             for (size_t t = 0; t < m_tails.size(); t++)
             {
-                auto distance = head.Distance(m_tails[t]);
+                auto distance = head - m_tails[t];
 
                 if ((std::abs(distance.x) == 2) || (std::abs(distance.y) == 2))
                 {

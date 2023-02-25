@@ -17,8 +17,17 @@ class DailyTask
     {
     }
 
-    DailyTask(std::string inputFileName)
+    DailyTask(const std::string& inputFileName)
         : m_inputFileName{inputFileName}
+        , m_params()
+        , m_result{0}
+        , m_inputFile{inputFileName}
+    {
+    }
+
+    DailyTask(const std::string& inputFileName, const std::string& params)
+        : m_inputFileName{inputFileName}
+        , m_params(params)
         , m_result{0}
         , m_inputFile{inputFileName}
     {
@@ -44,6 +53,7 @@ class DailyTask
 
   protected:
     std::string m_inputFileName;
+    std::string m_params;
     std::string m_result;
     std::ifstream m_inputFile;
 

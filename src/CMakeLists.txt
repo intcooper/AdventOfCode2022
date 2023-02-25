@@ -32,6 +32,7 @@ add_executable (
 	"Day12.cpp"
 	"Day13.cpp"
 	"Day14.cpp"
+	"Day15.cpp"
 )
 
 target_include_directories(AdventOfCode2022 PRIVATE ../include)
@@ -56,27 +57,31 @@ install(FILES ../res/day11input.txt DESTINATION bin)
 install(FILES ../res/day12input.txt DESTINATION bin)
 install(FILES ../res/day13input.txt DESTINATION bin)
 install(FILES ../res/day14input.txt DESTINATION bin)
+install(FILES ../res/day15input.txt DESTINATION bin)
 
 enable_testing()
 
-function(do_test target arg1 arg2 result)
-  add_test(NAME Comp${arg1} COMMAND ${target} ${arg1} ${arg2})
-  set_tests_properties(Comp${arg1}
+function(do_test name target arg1 arg2 arg3 result)
+  add_test(NAME Comp${name} COMMAND ${target} ${arg1} ${arg2} ${arg3})
+  set_tests_properties(Comp${name}
     PROPERTIES PASS_REGULAR_EXPRESSION ${result}
     )
 endfunction()
 
-do_test(AdventOfCode2022 1 ../../res/day1input.txt "  Task1: 74711\n  Task2: 209481")
-do_test(AdventOfCode2022 2 ../../res/day2input.txt "  Task1: 10718\n  Task2: 14652")
-do_test(AdventOfCode2022 3 ../../res/day3input.txt "  Task1: 8394\n  Task2: 2413")
-do_test(AdventOfCode2022 4 ../../res/day4input.txt "  Task1: 471\n  Task2: 888")
-do_test(AdventOfCode2022 5 ../../res/day5input.txt "  Task1: GRTSWNJHH\n  Task2: QLFQDBBHM")
-do_test(AdventOfCode2022 6 ../../res/day6input.txt "  Task1: 1480\n  Task2: 2746")
-do_test(AdventOfCode2022 7 ../../res/day7input.txt "  Task1: 1845346\n  Task2: 3636703")
-do_test(AdventOfCode2022 8 ../../res/day8input.txt "  Task1: 1662\n  Task2: 537600")
-do_test(AdventOfCode2022 9 ../../res/day9input.txt "  Task1: 6057\n  Task2: 2514")
-do_test(AdventOfCode2022 10 ../../res/day10input.txt "  Task1: 14060")
-do_test(AdventOfCode2022 11 ../../res/day11input.txt "  Task1: 76728\n  Task2: 21553910156")
-do_test(AdventOfCode2022 12 ../../res/day12input.txt "  Task1: 391\n  Task2: 386")
-do_test(AdventOfCode2022 13 ../../res/day13input.txt "  Task1: 6623\n  Task2: 23049")
-do_test(AdventOfCode2022 14 ../../res/day14input.txt "  Task1: 964\n  Task2: 32041")
+do_test(Day1 AdventOfCode2022 1 ../../res/day1input.txt "" "  Task1: 74711\n  Task2: 209481")
+do_test(Day2 AdventOfCode2022 2 ../../res/day2input.txt "" "  Task1: 10718\n  Task2: 14652")
+do_test(Day3 AdventOfCode2022 3 ../../res/day3input.txt "" "  Task1: 8394\n  Task2: 2413")
+do_test(Day4 AdventOfCode2022 4 ../../res/day4input.txt "" "  Task1: 471\n  Task2: 888")
+do_test(Day5 AdventOfCode2022 5 ../../res/day5input.txt "" "  Task1: GRTSWNJHH\n  Task2: QLFQDBBHM")
+do_test(Day6 AdventOfCode2022 6 ../../res/day6input.txt "" "  Task1: 1480\n  Task2: 2746")
+do_test(Day7 AdventOfCode2022 7 ../../res/day7input.txt "" "  Task1: 1845346\n  Task2: 3636703")
+do_test(Day8 AdventOfCode2022 8 ../../res/day8input.txt "" "  Task1: 1662\n  Task2: 537600")
+do_test(Day9 AdventOfCode2022 9 ../../res/day9input.txt "" "  Task1: 6057\n  Task2: 2514")
+do_test(Day10 AdventOfCode2022 10 ../../res/day10input.txt "" "  Task1: 14060")
+do_test(Day11 AdventOfCode2022 11 ../../res/day11input.txt "" "  Task1: 76728\n  Task2: 21553910156")
+do_test(Day12 AdventOfCode2022 12 ../../res/day12input.txt "" "  Task1: 391\n  Task2: 386")
+do_test(Day13 AdventOfCode2022 13 ../../res/day13input.txt "" "  Task1: 6623\n  Task2: 23049")
+do_test(Day14 AdventOfCode2022 14 ../../res/day14input.txt "" "  Task1: 964\n  Task2: 32041")
+do_test(Day15_example AdventOfCode2022 15 ../../res/day15input_example.txt "10 20" "Task1: 26\n  Task2: 56000011")
+do_test(Day15         AdventOfCode2022 15 ../../res/day15input.txt "2000000 4000000" "Task1: 4424278\n  Task2: 10382630753392")
+ 

@@ -11,7 +11,7 @@ auto GetCommandLineParams(int argc, char* argv[])
     ? [&argc, &argv]()
       {
           const std::vector<std::string> params(argv, argv+argc);
-          return std::optional{std::make_tuple(params[0], std::stoi(params[1]), params[2])};
+          return std::optional{std::make_tuple(params[0], std::stoi(params[1]), params[2], params.size() > 3 ? params[3] : "")};
       }()
     : std::nullopt;
 }
@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-    const auto[ignore, day, inputFile] = params.value();
+    const auto[ignore, day, inputFile, args] = params.value();
 
     std::unique_ptr<AdventOfCode::DailyTask> task;
 
@@ -72,6 +72,9 @@ int main(int argc, char* argv[])
         break;
     case 14:
         task = std::make_unique<AdventOfCode::Day14>(inputFile);
+        break;
+    case 15:
+        task = std::make_unique<AdventOfCode::Day15>(inputFile, args);
         break;
     }
 

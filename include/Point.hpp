@@ -1,6 +1,7 @@
 #pragma once
 
 #include <algorithm>
+#include <optional>
 #include <ostream>
 
 namespace AdventOfCode
@@ -63,12 +64,17 @@ struct Point
         return {this->x - other.x, this->y - other.y};
     }
 
+    constexpr Point operator-(int i) const
+    {
+        return {this->x - i, this->y - i};
+    }
+
     constexpr Point operator+(const Point& other) const
     {
         return {this->x + other.x, this->y + other.y};
     }
 
-    constexpr Point operator*(const int& i) const
+    constexpr Point operator*(int i) const
     {
         return {this->x * i, this->y * i};
     }
@@ -96,9 +102,25 @@ struct Point
                ((other.x << bitShift) + other.y);
     }
 
-    constexpr Point Distance(const Point& other) const
+    constexpr bool operator<=(const Point& other) const
     {
-        return {this->x - other.x, this->y - other.y};
+        return operator==(other) || operator<(other);
+    }
+
+    constexpr bool operator>(const Point& other) const
+    {
+        return !operator==(other) && !operator<(other);
+    }
+
+    constexpr bool operator>=(const Point& other) const
+    {
+        return operator==(other) || operator>(other);
+    }
+
+    // Returns the Mahnattan distance between this point and the specified one.
+    constexpr uint32_t Distance(const Point& other) const
+    {
+        return std::abs(this->x - other.x) + std::abs(this->y - other.y);
     }
 };
 
