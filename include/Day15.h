@@ -6,7 +6,7 @@
 
 #include <map>
 #include <string>
-
+#include <climits>
 
 namespace AdventOfCode
 {
