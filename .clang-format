@@ -9,5 +9,7 @@ IndentWidth:     4
 BreakConstructorInitializersBeforeComma: true
 AllowShortFunctionsOnASingleLine: Empty
 PointerAlignment: Left
+ColumnLimit: 132
+AlwaysBreakTemplateDeclarations: true
 ...
 

@@ -1,12 +1,12 @@
 #pragma once
 
 #include "DailyTask.h"
-#include "Grid.h"
+#include "Grid.hpp"
 #include "Point.hpp"
 
+#include <climits>
 #include <map>
 #include <string>
-#include <climits>
 
 namespace AdventOfCode
 {
@@ -21,14 +21,13 @@ class Day15 : public DailyTask
     }
 
     /**
-     * @brief Finds the only point outside of the boundaries of the sensors
-     * detection area.
+     * @brief Finds the number of points inside the boundaries of any sensor
+     * detection area for the specified row.
      *
-     * The algorithm checks only the points of the line specified as first
+     * The algorithm checks only the points of the row specified as first
      * additional command line parameter (argv[2]).
      * If the point is closer to any sensor than its detected beacon, the point
-     * is not valid as it lies within the sensor
-     * detection area.
+     * is not valid as it lies within the sensor detection area.
      */
     virtual void Task1() override;
 
@@ -37,14 +36,11 @@ class Day15 : public DailyTask
      * detection area.
      *
      * The algorithm is based on the idea to work out the edges of the sensors'
-     * detection areas,
-     * i.e. the perimeter of the polygon defined by the points with distance =
-     * beacon distance + 1,
-     * and find a point of intersection between at least two of the edges of
-     * different slope.
+     * detection areas, i.e. the perimeter of the polygon defined by the points
+     * with distance = beacon distance + 1, and find a point of intersection
+     * between at least two of the edges of different slope.
      * The intersections points lying outside of all the sensors' detection
-     * areas, are potentially
-     * the position of the distress beacon.
+     * areas, are potentially the position of the distress beacon.
      */
     virtual void Task2() override;
 

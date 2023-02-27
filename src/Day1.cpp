@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <numeric>
+#include <ranges>
 
 namespace AdventOfCode
 {
@@ -54,8 +55,10 @@ void Day1::Task2()
         }
     }
 
-    std::partial_sort(elvesCalories.begin(), elvesCalories.begin() + 3,
-                      elvesCalories.end(), std::greater<uint32_t>());
+    elvesCalories.push_back(elfcalories);
+
+    std::ranges::partial_sort(elvesCalories, elvesCalories.begin() + 3,
+                              std::greater<uint32_t>());
     m_result = std::to_string(
         std::accumulate(elvesCalories.begin(), elvesCalories.begin() + 3, 0));
 }

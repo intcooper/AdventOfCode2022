@@ -100,17 +100,19 @@ void Day15::Task2()
     {
         for (const auto& e2 : edges2)
         {
-            const auto intersection = e1.Intersect(e2);
+            const auto pi = e1.Intersect(e2);
 
-            if ((intersection.x >= 0) && (intersection.x <= maxCoord) && (intersection.y >= 0) && (intersection.y <= maxCoord))
+            if ((pi.x >= 0) && (pi.x <= maxCoord) && (pi.y >= 0) && (pi.y <= maxCoord))
             {
-                intersections[intersection] = intersections[intersection] + 1;
+                intersections[pi] = intersections[pi] + 1;
             }
         }
     }
 
-    // filter out the intersections found only one time.
-    std::vector<std::pair<Point, int>> filtered_intersections;
+    // find the only intersection that lies outside of all the sensors detection
+    // areas.
+    Point distressBeacon{-1, -1};
+
     for (const auto& i : intersections)
     {
         if (i.second < 2)
@@ -118,14 +120,6 @@ void Day15::Task2()
             continue;
         }
 
-        filtered_intersections.emplace_back(i);
-    }
-
-    // find the only intersection that lies outside of all the sensors detection
-    // areas.
-    Point distressBeacon{-1, -1};
-    for (const auto& i : filtered_intersections)
-    {
         const auto point = i.first;
 
         const auto res =

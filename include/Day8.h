@@ -1,7 +1,7 @@
 #pragma once
 
 #include "DailyTask.h"
-#include "Grid.h"
+#include "Grid.hpp"
 
 namespace AdventOfCode
 {

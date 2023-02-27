@@ -2,6 +2,8 @@
 
 #include "DailyTask.h"
 
+#include <string>
+
 namespace AdventOfCode
 {
 class Day1 : public DailyTask

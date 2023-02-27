@@ -5,7 +5,8 @@
 namespace AdventOfCode
 {
 /**
- * @brief Abstracts a line in the eucledian plane in the form slope-point.
+ * @brief Abstraction of a line in the eucledian plane in the form slope-point
+ * (y − Py = m(x − Px))
  */
 class Line
 {
@@ -16,13 +17,11 @@ class Line
      * @param p1 First point.
      * @param p2 Second point.
      */
-    Line(Point p1, Point p2) noexcept
+    Line(const Point& p1, const Point& p2) noexcept
+        : m_slope{static_cast<double>(p1.y - p2.y) /
+                  static_cast<double>(p1.x - p2.x)}
+        , m_point{p1}
     {
-        m_slope =
-            static_cast<double>(p1.y - p2.y) / static_cast<double>(p1.x - p2.x);
-        // y − y1 = m(x − x1)
-        // y = mx - mx1 + y1
-        m_point = p1;
     }
 
     /**
@@ -36,11 +35,12 @@ class Line
     {
         // line a : y = (ma * x) - (ma * x1a) + y1a
         // line b : y = (mb * x) - (mb * x1b) + y1b
-        // solve by x:
+        // solve by y:
         // (ma * x) - (ma * x1a) + y1a = (mb * x) - (mb * x1b) + y1b
         // (ma * x) - (mb * x) = y1b - (mb * x1b) + (ma * x1a) - y1a
         // (ma - mb) * x = y1b - (mb * x1b) + (ma * x1a) - y1a
         // x = (y1b - (mb * x1b) + (ma * x1a) - y1a) / (ma - mb)
+        // variables below for readability
         const auto ma = m_slope;
         const auto mb = other.m_slope;
         const auto x1a = m_point.x;
@@ -56,6 +56,6 @@ class Line
 
   private:
     double m_slope; /**< The line's slope */
-    Point m_point; /**< The line's point */
+    Point m_point;  /**< The line's point */
 };
 }

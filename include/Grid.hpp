@@ -8,21 +8,21 @@
 
 namespace AdventOfCode
 {
-/// <summary>
-/// Templated implementation of a dynamic bi-dimensional array.
-/// </summary>
-/// <typeparam name="ValueType">The element type.</typeparam>
-/// <remarks>
-/// The internal structure is a vector of vectors of ValueType.
-/// Adding an element to the container invalidates all the iterators!
-/// To-do: implement const iterators.
-/// </remarks>
-template <class ValueType> class Grid
+/**
+ * @brief Templated implementation of a dynamic bi-dimensional array. The
+ * internal structure is a vector of vectors of ValueType.
+ * Adding an element to the container invalidates all the iterators!
+ * To-do: implement const iterators.
+ */
+template <class ValueType>
+class Grid
 {
   public:
-    template <class GridType> class ColumnIterator;
+    template <class GridType>
+    class ColumnIterator;
 
-    template <class GridType> class RowIterator;
+    template <class GridType>
+    class RowIterator;
 
     using value_type = ValueType;
     using pointer = ValueType*;
@@ -107,9 +107,7 @@ template <class ValueType> class Grid
         int minX = std::min(newMap[0].size(), m_map[0].size());
         int offsetY = 0; // std::abs(static_cast<int>(newMap.size()) -
                          // static_cast<int>(m_map.size())) / 2; // centered
-        int offsetX = std::abs(static_cast<int>(newMap[0].size()) -
-                               static_cast<int>(m_map[0].size())) /
-                      2; // centered
+        int offsetX = std::abs(static_cast<int>(newMap[0].size()) - static_cast<int>(m_map[0].size())) / 2; // centered
 
         for (int y = 0; y < minY; ++y)
         {
@@ -133,19 +131,17 @@ template <class ValueType> class Grid
 
     column_iterator column_end(size_t column)
     {
-        return column_iterator(this, column, std::numeric_limits<size_t>::max(),
-                               true);
+        return column_iterator(this, column, (std::numeric_limits<size_t>::max)(), true);
     }
 
     std::reverse_iterator<column_iterator> column_rbegin(size_t column)
     {
-        return std::reverse_iterator<column_iterator>(column_end(column));
+        return std::make_reverse_iterator(column_end(column));
     }
 
     std::reverse_iterator<column_iterator> column_rend(size_t column)
     {
-        return std::make_reverse_iterator<column_iterator>(
-            column_begin(column));
+        return std::make_reverse_iterator(column_begin(column));
     }
 
     row_iterator row_begin(size_t row)
@@ -155,22 +151,22 @@ template <class ValueType> class Grid
 
     row_iterator row_end(size_t row)
     {
-        return row_iterator(this, row, std::numeric_limits<size_t>::max(),
-                            true);
+        return row_iterator(this, row, (std::numeric_limits<size_t>::max)(), true);
     }
 
     std::reverse_iterator<row_iterator> row_rbegin(size_t row)
     {
-        return std::reverse_iterator<row_iterator>(row_end(row));
+        return std::make_reverse_iterator(row_end(row));
     }
 
     std::reverse_iterator<row_iterator> row_rend(size_t row)
     {
-        return std::make_reverse_iterator<row_iterator>(row_begin(row));
+        return std::make_reverse_iterator(row_begin(row));
     }
 
   private:
-    template <class GridType> class GridIterator
+    template <class GridType>
+    class GridIterator
     {
       public:
         using iterator_category = std::bidirectional_iterator_tag;
@@ -181,14 +177,13 @@ template <class ValueType> class Grid
 
         GridIterator() noexcept
             : m_map{nullptr}
-            , m_row{std::numeric_limits<size_t>::max()}
-            , m_column{std::numeric_limits<size_t>::max()}
+            , m_row{(std::numeric_limits<size_t>::max)()}
+            , m_column{(std::numeric_limits<size_t>::max)()}
             , m_isEnd{true}
         {
         }
 
-        GridIterator(GridType* ptr, difference_type column, difference_type row,
-                     bool isEnd) noexcept
+        GridIterator(GridType* ptr, difference_type column, difference_type row, bool isEnd) noexcept
             : m_map{ptr}
             , m_row{row}
             , m_column{column}
@@ -224,9 +219,7 @@ template <class ValueType> class Grid
 
         friend bool operator==(const GridIterator& a, const GridIterator& b)
         {
-            return (a.m_map == b.m_map) &&
-                   ((a.m_isEnd && b.m_isEnd) ||
-                    ((a.m_column == b.m_column) && (a.m_row == b.m_row)));
+            return (a.m_map == b.m_map) && ((a.m_isEnd && b.m_isEnd) || ((a.m_column == b.m_column) && (a.m_row == b.m_row)));
         };
 
         friend bool operator!=(const GridIterator& a, const GridIterator& b)
@@ -250,10 +243,8 @@ template <class ValueType> class Grid
         {
         }
 
-        ColumnIterator(GridType* ptr,
-                       typename GridIterator<GridType>::difference_type column,
-                       typename GridIterator<GridType>::difference_type row,
-                       bool isEnd) noexcept
+        ColumnIterator(GridType* ptr, typename GridIterator<GridType>::difference_type column,
+                       typename GridIterator<GridType>::difference_type row, bool isEnd) noexcept
             : GridIterator<GridType>(ptr, column, row, isEnd)
         {
         }
@@ -303,17 +294,16 @@ template <class ValueType> class Grid
         }
     };
 
-    template <class GridType> class RowIterator : public GridIterator<GridType>
+    template <class GridType>
+    class RowIterator : public GridIterator<GridType>
     {
       public:
         RowIterator()
         {
         }
 
-        RowIterator(GridType* ptr,
-                    typename GridIterator<GridType>::difference_type row,
-                    typename GridIterator<GridType>::difference_type column,
-                    bool isEnd) noexcept
+        RowIterator(GridType* ptr, typename GridIterator<GridType>::difference_type row,
+                    typename GridIterator<GridType>::difference_type column, bool isEnd) noexcept
             : GridIterator<GridType>(ptr, column, row, isEnd)
         {
         }
@@ -363,4 +353,5 @@ template <class ValueType> class Grid
         }
     };
 };
+
 }
