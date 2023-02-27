@@ -26,8 +26,9 @@ struct Point
 
     /**
      * @brief Destructor.
+     * @remark The syntax "= default" makes the build fail with gcc.
      */
-    virtual constexpr ~Point() = default;
+    virtual constexpr ~Point(){};
 
     /**
      * @brief Constructs a point at the specified coordinates.
