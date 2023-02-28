@@ -5,7 +5,7 @@
 #include <set>
 #include <vector>
 
-namespace AdventOfCode
+namespace AdventOfCode::Utils
 {
 class Rope
 {

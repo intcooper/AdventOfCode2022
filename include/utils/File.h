@@ -2,6 +2,9 @@
 
 #include <string>
 
+namespace AdventOfCode::Utils
+{
+
 class File
 {
   public:
@@ -25,3 +28,5 @@ class File
     std::string m_name;
     uint32_t m_size;
 };
+
+}

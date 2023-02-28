@@ -1,6 +1,6 @@
 #include "Day9.h"
 
-#include "Utils.hpp"
+#include "utils/Helpers.hpp"
 
 namespace AdventOfCode
 {
@@ -11,24 +11,24 @@ Day9::Day9(std::string inputFileName)
 
 void Day9::Task1()
 {
-    Rope rope{1};
+    Utils::Rope rope{1};
 
     RunTask(rope);
 }
 
 void Day9::Task2()
 {
-    Rope rope{9};
+    Utils::Rope rope{9};
 
     RunTask(rope);
 }
 
-void Day9::RunTask(Rope rope)
+void Day9::RunTask(Utils::Rope rope)
 {
-    const std::map<char, Point> directions{{'U', Rope::up},
-                                           {'D', Rope::down},
-                                           {'R', Rope::right},
-                                           {'L', Rope::left}};
+    const std::map<char, Utils::Point> directions{{'U', Utils::Rope::up},
+                                           {'D', Utils::Rope::down},
+                                           {'R', Utils::Rope::right},
+                                           {'L', Utils::Rope::left}};
 
     for (std::string line; std::getline(m_inputFile, line);)
     {

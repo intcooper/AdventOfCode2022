@@ -18,7 +18,9 @@ add_executable (
 	"GridTests.cpp"
 )
 
-target_include_directories(AdventOfCode2022Tests PRIVATE C:/dev/vcpkg/vcpkg/installed/x64-windows/include)
+find_package(Boost COMPONENTS test REQUIRED)
+
+target_include_directories(AdventOfCode2022Tests PRIVATE ${Boost_INCLUDE_DIR})
 target_include_directories(AdventOfCode2022Tests PRIVATE ../include)
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)

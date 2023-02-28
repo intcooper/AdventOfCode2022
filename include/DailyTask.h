@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 
-#include "Utils.hpp"
+#include "utils/Helpers.hpp"
 
 namespace AdventOfCode
 {

@@ -1,8 +1,8 @@
 #pragma once
 
 #include "DailyTask.h"
-#include "Grid.hpp"
-#include "Point.hpp"
+#include "utils/Grid.hpp"
+#include "utils/Point.hpp"
 
 #include <climits>
 #include <map>
@@ -45,13 +45,13 @@ class Day15 : public DailyTask
     virtual void Task2() override;
 
   private:
-    Point m_minPoint{INT_MAX, INT_MAX};
-    Point m_maxPoint{INT_MIN, INT_MIN};
-    std::map<Point, Point> m_sensorsAndBeacons;
+    Utils::Point m_minPoint{INT_MAX, INT_MAX};
+    Utils::Point m_maxPoint{INT_MIN, INT_MIN};
+    std::map<Utils::Point, Utils::Point> m_sensorsAndBeacons;
 
     void ParseInputFile();
-    void PlotSegment(const Point& start, const Point& end);
-    void PrintMap(const Point& source);
-    int DropSand(Point source);
+    void PlotSegment(const Utils::Point& start, const Utils::Point& end);
+    void PrintMap(const Utils::Point& source);
+    int DropSand(Utils::Point source);
 };
 }

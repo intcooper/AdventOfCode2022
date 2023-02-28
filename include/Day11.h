@@ -1,7 +1,7 @@
 #pragma once
 
 #include "DailyTask.h"
-#include "Monkey.h"
+#include "utils/Monkey.h"
 
 #include <functional>
 #include <string>
@@ -23,7 +23,7 @@ class Day11 : public DailyTask
     virtual void Task2() override;
 
   private:
-    std::vector<Monkey> m_monkeys;
+    std::vector<Utils::Monkey> m_monkeys;
 
     void ParseInputFile();
     void RunTask(int numOfRounds,

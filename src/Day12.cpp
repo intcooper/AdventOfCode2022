@@ -41,13 +41,13 @@ void Day12::Task2()
 }
 
 // A* path-finding algorithm
-std::vector<Point> Day12::Explore(const Point& start, const Point& end)
+std::vector<Utils::Point> Day12::Explore(const Utils::Point& start, const Utils::Point& end)
 {
-    std::vector<Point> outPath;
+    std::vector<Utils::Point> outPath;
 
     struct Node
     {
-        Node(Point point, Point parent, int f, int g, int h)
+        Node(Utils::Point point, Utils::Point parent, int f, int g, int h)
             : point(std::move(point))
             , parent(std::move(parent))
             , f(f)
@@ -61,26 +61,26 @@ std::vector<Point> Day12::Explore(const Point& start, const Point& end)
         Node& operator=(const Node&) = default;
         Node& operator=(Node&&) = default;
 
-        Point point;
-        Point parent;
+        Utils::Point point;
+        Utils::Point parent;
         int f; // g + h
         int g; // total cost of path from the start to this node
         int h; // heuristic result (estimated distance/cost from destination)
                // - taxicab distance
     };
 
-    constexpr std::array<Point, 4> validDirs = {
-        Point{-1, 0}, {+1, 0}, {0, -1}, {0, +1}};
+    constexpr std::array<Utils::Point, 4> validDirs = {
+        Utils::Point{-1, 0}, {+1, 0}, {0, -1}, {0, +1}};
 
-    std::map<Point, Node> open;
-    std::map<Point, Node> closed;
+    std::map<Utils::Point, Node> open;
+    std::map<Utils::Point, Node> closed;
 
-    open.insert({start, Node{start, Point{-1, -1}, 0, 0, 0}});
+    open.insert({start, Node{start, Utils::Point{-1, -1}, 0, 0, 0}});
 
     while (!open.empty())
     {
         uint32_t minimumDistance{UINT32_MAX};
-        Point minimumDistancePoint;
+        Utils::Point minimumDistancePoint;
 
         for (const auto& p : open)
         {
@@ -118,7 +118,7 @@ std::vector<Point> Day12::Explore(const Point& start, const Point& end)
 
         for (const auto& d : validDirs)
         {
-            Point next{currentNode.point};
+            Utils::Point next{currentNode.point};
             next += d;
 
             // check whether the next point has valid coordinates
@@ -188,13 +188,13 @@ void Day12::ParseInputFile()
         auto pos = std::find(line.begin(), line.end(), 'S');
         if (pos != line.end())
         {
-            m_startPos = Point(pos - line.begin(), currentRow);
+            m_startPos = Utils::Point(pos - line.begin(), currentRow);
         }
 
         pos = std::find(line.begin(), line.end(), 'E');
         if (pos != line.end())
         {
-            m_endPos = Point(pos - line.begin(), currentRow);
+            m_endPos = Utils::Point(pos - line.begin(), currentRow);
         }
 
         pos = std::find(line.begin(), line.end(), 'a');

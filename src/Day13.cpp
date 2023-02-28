@@ -58,7 +58,7 @@ void Day13::Task2()
     int pairNo = 0;
     std::string strLeft;
     std::string strRight;
-    std::vector<Packet> packets;
+    std::vector<Utils::Packet> packets;
 
     for (std::string line; std::getline(m_inputFile, line);)
     {
@@ -86,7 +86,7 @@ void Day13::Task2()
     m_result = std::to_string(index1 * index2);
 }
 
-void Day13::GetPacket(Packet* root, std::string_view text, int& charIndex)
+void Day13::GetPacket(Utils::Packet* root, std::string_view text, int& charIndex)
 {
     std::string value;
 
@@ -95,7 +95,7 @@ void Day13::GetPacket(Packet* root, std::string_view text, int& charIndex)
         const auto currentChar = text[charIndex];
         if (currentChar == '[')
         {
-            Packet newRoot(root);
+            Utils::Packet newRoot(root);
             GetPacket(&newRoot, text, ++charIndex);
 
             root->AppendList(newRoot);
@@ -138,8 +138,8 @@ void Day13::GetPacket(Packet* root, std::string_view text, int& charIndex)
     }
 }
 
-std::optional<bool> Day13::ComparePackets(const Packet& left,
-                                          const Packet& right)
+std::optional<bool> Day13::ComparePackets(const Utils::Packet& left,
+                                          const Utils::Packet& right)
 {
     const auto maxIndex = std::max(left.GetMaxIndex(), right.GetMaxIndex());
 
@@ -167,7 +167,7 @@ std::optional<bool> Day13::ComparePackets(const Packet& left,
                     return false; // no more items in the right list
                 }
 
-                Packet newLeft(left);
+                Utils::Packet newLeft(left);
                 newLeft.ConvertToList(index);
                 auto res = ComparePackets(newLeft.GetList(index),
                                           right.GetList(index));
@@ -190,7 +190,7 @@ std::optional<bool> Day13::ComparePackets(const Packet& left,
                 return std::nullopt;
             }
 
-            Packet newRight(right);
+            Utils::Packet newRight(right);
 
             if (right.IsValue(index))
             {
@@ -224,10 +224,10 @@ std::optional<bool> Day13::ComparePackets(const Packet& left,
     return std::nullopt;
 }
 
-Packet Day13::TextToPacket(std::string_view text)
+Utils::Packet Day13::TextToPacket(std::string_view text)
 {
     int charIndex = 0;
-    Packet packet;
+    Utils::Packet packet;
     GetPacket(&packet, text, charIndex);
 
     return packet;

@@ -1,6 +1,6 @@
-#include "Directory.h"
+#include "utils/Directory.h"
 
-namespace AdventOfCode
+namespace AdventOfCode::Utils
 {
 Directory::Directory(const std::string& name, Directory* parent)
     : m_name{name}

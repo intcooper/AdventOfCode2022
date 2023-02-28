@@ -4,14 +4,13 @@
 #include <boost/test/included/unit_test.hpp>
 namespace utf = boost::unit_test;
 
-#include "Grid.hpp"
+#include "utils/Grid.hpp"
 
 namespace AdventOfCode2022Tests
 {
 constexpr uint32_t GridRows{10};
 constexpr uint32_t GridColumns{10};
-AdventOfCode::Grid<uint8_t> grid;
-std::vector<std::vector<uint8_t>> grid2;
+AdventOfCode::Utils::Grid<uint8_t> grid;
 
 struct GridTestsSuiteFixture
 {
@@ -21,12 +20,10 @@ struct GridTestsSuiteFixture
 
         for (int j = 0; j < GridRows; ++j)
         {
-            grid2.emplace_back(); 
             grid.AppendRow();
 
             for (int i = 0; i < GridColumns; ++i)
             {
-                grid2.back().emplace_back(i + (10 * j));
                 grid.AppendValue(i + (10 * j));
             }
         }

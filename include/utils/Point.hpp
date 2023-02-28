@@ -4,7 +4,7 @@
 #include <optional>
 #include <ostream>
 
-namespace AdventOfCode
+namespace AdventOfCode::Utils
 {
 /**
  * @brief Abtraction of a point in the euclidean plane.

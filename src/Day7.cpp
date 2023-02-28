@@ -59,7 +59,7 @@ void Day7::Task2()
 
 void Day7::ParseInputFile()
 {
-    Directory* currentDir = nullptr;
+    Utils::Directory* currentDir = nullptr;
 
     for (std::string line; std::getline(m_inputFile, line);)
     {
@@ -98,11 +98,11 @@ void Day7::ParseInputFile()
             if (parts[0] == "dir")
             {
                 currentDir->AddDirectory(
-                    std::make_unique<Directory>(parts[1].data(), currentDir));
+                    std::make_unique<Utils::Directory>(parts[1].data(), currentDir));
             }
             else
             {
-                currentDir->AddFile(std::make_unique<File>(
+                currentDir->AddFile(std::make_unique<Utils::File>(
                     parts[1].data(),
                     static_cast<uint32_t>(std::stoi(parts[0].data()))));
             }
@@ -110,12 +110,12 @@ void Day7::ParseInputFile()
     }
 }
 
-std::string Day7::PrintFs(Directory* root) const
+std::string Day7::PrintFs(Utils::Directory* root) const
 {
     std::stringstream str;
 
     uint8_t levels{1};
-    Directory* tmp = root;
+    Utils::Directory* tmp = root;
 
     while (tmp->GetParent() != nullptr)
     {
@@ -125,13 +125,13 @@ std::string Day7::PrintFs(Directory* root) const
 
     str << std::string(levels - 1, '\t') << root->GetName() << "\n";
 
-    for (auto& f : root->m_files)
+    for (auto& f : root->GetFiles())
     {
         str << std::string(levels, '\t') << f->GetName() << "\t" << f->GetSize()
             << "\n";
     }
 
-    for (auto& d : root->m_directories)
+    for (auto& d : root->GetDirectories())
     {
         str << PrintFs(d.get());
     }

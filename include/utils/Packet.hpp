@@ -2,7 +2,7 @@
 
 #include <map>
 
-namespace AdventOfCode
+namespace AdventOfCode::Utils
 {
 
 class Packet
@@ -26,13 +26,11 @@ class Packet
 
     bool operator==(const Packet& other) const
     {
-        auto areValuesEqual = m_values.size() == other.m_values.size() &&
-                              std::equal(m_values.begin(), m_values.end(),
-                                         other.m_values.begin());
+        auto areValuesEqual =
+            m_values.size() == other.m_values.size() && std::equal(m_values.begin(), m_values.end(), other.m_values.begin());
 
         auto areListsEqual =
-            m_lists.size() == other.m_lists.size() &&
-            std::equal(m_lists.begin(), m_lists.end(), other.m_lists.begin());
+            m_lists.size() == other.m_lists.size() && std::equal(m_lists.begin(), m_lists.end(), other.m_lists.begin());
 
         return areValuesEqual && areListsEqual;
     }

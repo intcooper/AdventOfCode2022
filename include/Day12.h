@@ -1,7 +1,7 @@
 #pragma once
 
 #include "DailyTask.h"
-#include "Point.hpp"
+#include "utils/Point.hpp"
 
 #include <stdint.h>
 #include <string>
@@ -24,11 +24,11 @@ class Day12 : public DailyTask
 
   private:
     std::vector<std::string> m_map;
-    Point m_startPos;
-    Point m_endPos;
-    std::vector<Point> m_candidateStartPos;
+    Utils::Point m_startPos;
+    Utils::Point m_endPos;
+    std::vector<Utils::Point> m_candidateStartPos;
 
-    std::vector<Point> Explore(const Point& start, const Point& end);
+    std::vector<Utils::Point> Explore(const Utils::Point& start, const Utils::Point& end);
     void ParseInputFile();
 };
 }

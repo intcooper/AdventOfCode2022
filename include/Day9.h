@@ -1,7 +1,7 @@
 #pragma once
 
 #include "DailyTask.h"
-#include "Rope.hpp"
+#include "utils/Rope.hpp"
 
 #include <string>
 
@@ -22,6 +22,6 @@ class Day9 : public DailyTask
     virtual void Task2() override;
 
   private:
-    void RunTask(Rope rope);
+    void RunTask(Utils::Rope rope);
 };
 }

@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-namespace AdventOfCode
+namespace AdventOfCode::Utils
 {
 class Monkey
 {

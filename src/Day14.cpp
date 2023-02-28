@@ -19,8 +19,7 @@ void Day14::Task1()
     ParseInputFile();
 
     auto sourceX = std::find(m_map.row_begin(0), m_map.row_end(0), '+');
-    Point source{static_cast<int>(std::distance(m_map.row_begin(0), sourceX)),
-                 0};
+    Utils::Point source{static_cast<int>(std::distance(m_map.row_begin(0), sourceX)), 0};
 
     PrintMap(source);
 
@@ -35,13 +34,10 @@ void Day14::Task2()
     int total_units = 0;
 
     m_map.Resize(m_map.Rows() + 2, m_map.Cols(), '.');
-    PlotSegment({0, static_cast<int>(m_map.Rows() - 1)},
-                {static_cast<int>(m_map.Cols() - 1),
-                 static_cast<int>(m_map.Rows() - 1)});
+    PlotSegment({0, static_cast<int>(m_map.Rows() - 1)}, {static_cast<int>(m_map.Cols() - 1), static_cast<int>(m_map.Rows() - 1)});
 
     auto sourceX = std::find(m_map.row_begin(0), m_map.row_end(0), '+');
-    Point source{static_cast<int>(std::distance(m_map.row_begin(0), sourceX)),
-                 0};
+    Utils::Point source{static_cast<int>(std::distance(m_map.row_begin(0), sourceX)), 0};
 
     while (true)
     {
@@ -58,18 +54,16 @@ void Day14::Task2()
 
         m_map.Resize(m_map.Rows(), m_map.Cols() + 2, '.');
         PlotSegment({0, static_cast<int>(m_map.Rows() - 1)},
-                    {static_cast<int>(m_map.Cols() - 1),
-                     static_cast<int>(m_map.Rows() - 1)});
+                    {static_cast<int>(m_map.Cols() - 1), static_cast<int>(m_map.Rows() - 1)});
 
         sourceX = std::find(m_map.row_begin(0), m_map.row_end(0), '+');
-        source = Point{
-            static_cast<int>(std::distance(m_map.row_begin(0), sourceX)), 0};
+        source = Utils::Point{static_cast<int>(std::distance(m_map.row_begin(0), sourceX)), 0};
     }
 
     m_result = std::to_string(total_units);
 }
 
-void Day14::PlotSegment(const Point& start, const Point& end)
+void Day14::PlotSegment(const Utils::Point& start, const Utils::Point& end)
 {
     auto s = std::min(start, end);
     auto e = std::max(start, end);
@@ -83,7 +77,7 @@ void Day14::PlotSegment(const Point& start, const Point& end)
     }
 }
 
-void Day14::PrintMap(const Point& source)
+void Day14::PrintMap(const Utils::Point& source)
 {
 #ifdef PRINTMAP
     std::cout << '\n';
@@ -106,7 +100,7 @@ void Day14::PrintMap(const Point& source)
 
 void Day14::ParseInputFile()
 {
-    std::vector<std::vector<Point>> points;
+    std::vector<std::vector<Utils::Point>> points;
 
     for (std::string line; std::getline(m_inputFile, line);)
     {
@@ -143,8 +137,7 @@ void Day14::ParseInputFile()
         }
     }
 
-    m_map.SetSize(m_maxPoint.y - m_minPoint.y + 1,
-                  m_maxPoint.x - m_minPoint.x + 1, '.');
+    m_map.SetSize(m_maxPoint.y - m_minPoint.y + 1, m_maxPoint.x - m_minPoint.x + 1, '.');
 
     for (auto& p : points)
     {
@@ -170,14 +163,14 @@ void Day14::ParseInputFile()
     m_map.Set(0, 500 - m_minPoint.x, '+');
 }
 
-int Day14::DropSand(Point source)
+int Day14::DropSand(Utils::Point source)
 {
     int units{0};
     m_sandUnit = source;
 
     while (true)
     {
-        auto nextPoint = Point{m_sandUnit.x, m_sandUnit.y + 1};
+        auto nextPoint = Utils::Point{m_sandUnit.x, m_sandUnit.y + 1};
         auto nextChar = m_map.Get(nextPoint.y, nextPoint.x);
 
         if (nextChar == '.')
@@ -186,7 +179,7 @@ int Day14::DropSand(Point source)
             continue;
         }
 
-        nextPoint = Point{m_sandUnit.x - 1, m_sandUnit.y + 1};
+        nextPoint = Utils::Point{m_sandUnit.x - 1, m_sandUnit.y + 1};
         nextChar = m_map.Get(nextPoint.y, nextPoint.x);
 
         if (nextChar == '.')
@@ -200,7 +193,7 @@ int Day14::DropSand(Point source)
             break;
         }
 
-        nextPoint = Point{m_sandUnit.x + 1, m_sandUnit.y + 1};
+        nextPoint = Utils::Point{m_sandUnit.x + 1, m_sandUnit.y + 1};
         nextChar = m_map.Get(nextPoint.y, nextPoint.x);
 
         if (nextChar == '.')

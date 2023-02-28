@@ -6,7 +6,7 @@
 #include <optional>
 #include <vector>
 
-namespace AdventOfCode
+namespace AdventOfCode::Utils
 {
 /**
  * @brief Templated implementation of a dynamic bi-dimensional array. The

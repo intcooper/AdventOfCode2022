@@ -1,7 +1,7 @@
 #pragma once
 
 #include "DailyTask.h"
-#include "Packet.hpp"
+#include "utils/Packet.hpp"
 
 #include <optional>
 #include <string_view>
@@ -22,8 +22,8 @@ class Day13 : public DailyTask
     virtual void Task2() override;
 
   private:
-    Packet TextToPacket(std::string_view text);
-    void GetPacket(Packet* root, std::string_view text, int& index);
-    std::optional<bool> ComparePackets(const Packet& left, const Packet& right);
+    Utils::Packet TextToPacket(std::string_view text);
+    void GetPacket(Utils::Packet* root, std::string_view text, int& index);
+    std::optional<bool> ComparePackets(const Utils::Packet& left, const Utils::Packet& right);
 };
 }

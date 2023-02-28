@@ -2,7 +2,7 @@
 
 #include "Point.hpp"
 
-namespace AdventOfCode
+namespace AdventOfCode::Utils
 {
 /**
  * @brief Abstraction of a line in the eucledian plane in the form slope-point

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "DailyTask.h"
-#include "Directory.h"
+#include "utils/Directory.h"
 
 #include <string>
 
@@ -21,9 +21,9 @@ class Day7 : public DailyTask
     virtual void Task2() override;
 
   private:
-    Directory m_fsRoot;
+    Utils::Directory m_fsRoot;
 
-    std::string PrintFs(Directory* root) const;
+    std::string PrintFs(Utils::Directory* root) const;
     void ParseInputFile();
 };
 }

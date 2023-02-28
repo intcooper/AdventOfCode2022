@@ -1,6 +1,6 @@
 #include "Day15.h"
-#include "Line.hpp"
-#include "Utils.hpp"
+#include "utils/Line.hpp"
+#include "utils/Helpers.hpp"
 #include <algorithm>
 #include <stdint.h>
 #include <string>
@@ -24,7 +24,7 @@ void Day15::Task1()
 
     for (auto x = 0; x < cols; x++)
     {
-        const Point current{x, row};
+        const Utils::Point current{x, row};
 
         for (const auto& sb : m_sensorsAndBeacons)
         {
@@ -54,8 +54,8 @@ void Day15::Task2()
 {
     ParseInputFile();
 
-    std::vector<Line> edges1;
-    std::vector<Line> edges2;
+    std::vector<Utils::Line> edges1;
+    std::vector<Utils::Line> edges2;
 
     // Populate the edges collections in form of lines.
     // The points are the vertices of the polygon defining the boundaries of the
@@ -78,10 +78,10 @@ void Day15::Task2()
         const auto beaconDistance = sensor.Distance(beacon);
         const auto edgeDistance = static_cast<int>(beaconDistance + 1);
 
-        const auto pn = Point{sensor.x, sensor.y - edgeDistance};
-        const auto ps = Point{sensor.x, sensor.y + edgeDistance};
-        const auto pe = Point{sensor.x + edgeDistance, sensor.y};
-        const auto pw = Point{sensor.x - edgeDistance, sensor.y};
+        const auto pn = Utils::Point{sensor.x, sensor.y - edgeDistance};
+        const auto ps = Utils::Point{sensor.x, sensor.y + edgeDistance};
+        const auto pe = Utils::Point{sensor.x + edgeDistance, sensor.y};
+        const auto pw = Utils::Point{sensor.x - edgeDistance, sensor.y};
 
         edges1.emplace_back(pn, pe);
         edges1.emplace_back(ps, pw);
@@ -94,7 +94,7 @@ void Day15::Task2()
     // The map counts how many times the same intersection has been found.
     const auto param = Utils::Split(m_params, ' ')[1].data();
     const int maxCoord = std::stoi(param);
-    std::map<Point, int> intersections;
+    std::map<Utils::Point, int> intersections;
 
     for (const auto& e1 : edges1)
     {
@@ -111,7 +111,7 @@ void Day15::Task2()
 
     // find the only intersection that lies outside of all the sensors detection
     // areas.
-    Point distressBeacon{-1, -1};
+    Utils::Point distressBeacon{-1, -1};
 
     for (const auto& i : intersections)
     {
@@ -161,9 +161,9 @@ void Day15::ParseInputFile()
             continue;
         }
 
-        Point sensor{0, 0};
-        Point beacon{0, 0};
-        Point* currentPoint = nullptr;
+        Utils::Point sensor{0, 0};
+        Utils::Point beacon{0, 0};
+        Utils::Point* currentPoint = nullptr;
 
         const auto parts = Utils::Split(line, ':');
 
@@ -217,11 +217,11 @@ void Day15::ParseInputFile()
 
         const auto beaconDistance = sensor.Distance(beacon);
 
-        Point west{static_cast<int>(sensor.x - beaconDistance), sensor.y};
-        Point east{static_cast<int>(sensor.x + beaconDistance), sensor.y};
+        Utils::Point west{static_cast<int>(sensor.x - beaconDistance), sensor.y};
+        Utils::Point east{static_cast<int>(sensor.x + beaconDistance), sensor.y};
 
-        Point north{sensor.x, static_cast<int>(sensor.y - beaconDistance)};
-        Point south{sensor.x, static_cast<int>(sensor.y + beaconDistance)};
+        Utils::Point north{sensor.x, static_cast<int>(sensor.y - beaconDistance)};
+        Utils::Point south{sensor.x, static_cast<int>(sensor.y + beaconDistance)};
 
         if (west.x < m_minPoint.x)
             m_minPoint.x = west.x;

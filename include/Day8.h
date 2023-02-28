@@ -1,7 +1,7 @@
 #pragma once
 
 #include "DailyTask.h"
-#include "Grid.hpp"
+#include "utils/Grid.hpp"
 
 namespace AdventOfCode
 {
@@ -21,7 +21,7 @@ class Day8 : public DailyTask
     virtual void Task2() override;
 
   private:
-    Grid<TreeHeight> m_map;
+    Utils::Grid<TreeHeight> m_map;
 
     void ParseInputFile();
     bool IsTreeVisible(size_t treeRow, size_t treeCol);
