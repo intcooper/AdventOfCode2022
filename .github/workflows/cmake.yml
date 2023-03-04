@@ -34,7 +34,11 @@ jobs:
       # Build your program with the given configuration
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
-    - name: Unit Tests
+    - name: List files
+      working-directory: ${{github.workspace}}/build
+      run: ls -lR
+      
+    - name: Run Unit Tests
       working-directory: ${{github.workspace}}/build/test
       # Execute unit tests.
       run: AdventOfCode2022Tests --log_format=JUNIT --log_level=all --log_sink=report.xml
@@ -47,7 +51,7 @@ jobs:
         path: ${{github.workspace}}/build/test/report.xml            # Path to test results
         reporter: jest-junit                                         # Format of test results
           
-    - name: Integration Tests
+    - name: Run Integration Tests
       working-directory: ${{github.workspace}}/build
       # Execute tests defined by the CMake configuration.
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
