@@ -254,7 +254,7 @@ struct Point
      * @param other The point to which the distance should be calculated.
      * @return constexpr uint32_t The Manhattan distance between the two points.
      */
-    constexpr uint32_t Distance(const Point& other) const
+    uint32_t Distance(const Point& other) const
     {
         return std::abs(this->x - other.x) + std::abs(this->y - other.y);
     }

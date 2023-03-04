@@ -103,8 +103,8 @@ class Grid
             }
         }
 
-        int minY = std::min(newMap.size(), m_map.size());
-        int minX = std::min(newMap[0].size(), m_map[0].size());
+        int minY = (std::min)(newMap.size(), m_map.size());
+        int minX = (std::min)(newMap[0].size(), m_map[0].size());
         int offsetY = 0; // std::abs(static_cast<int>(newMap.size()) -
                          // static_cast<int>(m_map.size())) / 2; // centered
         int offsetX = std::abs(static_cast<int>(newMap[0].size()) - static_cast<int>(m_map[0].size())) / 2; // centered

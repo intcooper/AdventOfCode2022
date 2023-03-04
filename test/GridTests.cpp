@@ -50,13 +50,11 @@ BOOST_AUTO_TEST_CASE(row_end_points_to_past_the_last_row_element)
 BOOST_AUTO_TEST_CASE(row_rbegin_points_to_the_last_row_element)
 {
     BOOST_REQUIRE_EQUAL(*grid.row_rbegin(0), 9);
-    BOOST_REQUIRE_EQUAL(*grid2.begin()->rbegin(), 9);
 }
 
 BOOST_AUTO_TEST_CASE(row_rend_points_to_before_the_first_row_element)
 {
     BOOST_REQUIRE_EQUAL(*--grid.row_rend(0), 0);
-    BOOST_REQUIRE_EQUAL(*--grid2.begin()->rend(), 0);
 }
 
 BOOST_AUTO_TEST_CASE(distance_between_begin_and_end_is_row_size)

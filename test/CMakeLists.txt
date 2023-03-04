@@ -18,7 +18,7 @@ add_executable (
 	"GridTests.cpp"
 )
 
-find_package(Boost COMPONENTS test REQUIRED)
+find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
 target_include_directories(AdventOfCode2022Tests PRIVATE ${Boost_INCLUDE_DIR})
 target_include_directories(AdventOfCode2022Tests PRIVATE ../include)
