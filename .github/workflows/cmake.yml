@@ -1,5 +1,9 @@
 name: CMake
 
+permissions:
+    contents: read
+    checks: write
+    
 on:
   push:
     branches: [ "main" ]
