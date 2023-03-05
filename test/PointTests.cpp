@@ -3,7 +3,7 @@ namespace utf = boost::unit_test;
 
 #include "utils/Point.hpp"
 
-namespace AdventOfCode2022Tests
+namespace AdventOfCode::Tests
 {
 
 struct PointsTestsSuiteFixture

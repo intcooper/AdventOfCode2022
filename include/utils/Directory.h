@@ -21,6 +21,7 @@ class Directory
     std::multimap<std::string, uint32_t> FindDirectoriesOfMaxSize(uint32_t maxSize) const;
     Directory* GetDirectory(const std::string& name) const;
     bool HasChildren() const;
+    
     inline const std::vector<std::unique_ptr<Directory>>& GetDirectories() const
     {
         return m_directories;

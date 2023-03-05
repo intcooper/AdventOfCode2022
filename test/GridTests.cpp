@@ -6,7 +6,7 @@ namespace utf = boost::unit_test;
 #include <algorithm>
 #include <iterator>
 
-namespace AdventOfCode2022Tests
+namespace AdventOfCode::Tests
 {
 constexpr uint32_t GridRows{10};
 constexpr uint32_t GridColumns{10};
