@@ -39,3 +39,4 @@ build
 *.cmake
 CMakeCache.txt
 install_manifest.txt
+.clangd

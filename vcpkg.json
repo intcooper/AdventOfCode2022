@@ -1,7 +1,0 @@
-{
-    "name": "advent-of-code-2022-tests",
-    "version-string": "0.1.0",
-    "dependencies": [
-      "boost-test"
-    ]
-  }

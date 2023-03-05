@@ -1,16 +1,16 @@
-#include <algorithm>
-#include <iterator>
-#define BOOST_TEST_MODULE My Test
-#include <boost/test/included/unit_test.hpp>
+#include <boost/test/unit_test.hpp>
 namespace utf = boost::unit_test;
 
 #include "utils/Grid.hpp"
+
+#include <algorithm>
+#include <iterator>
 
 namespace AdventOfCode2022Tests
 {
 constexpr uint32_t GridRows{10};
 constexpr uint32_t GridColumns{10};
-AdventOfCode::Utils::Grid<uint8_t> grid;
+AdventOfCode::Utils::Grid<uint32_t> grid;
 
 struct GridTestsSuiteFixture
 {
