@@ -1,0 +1,267 @@
+@startuml Day16_example
+
+left to right direction
+skinparam roundCorner 30
+
+object RT {
+	0
+}
+object VB {
+	0
+}
+object AD {
+	0
+}
+object RE {
+	4
+}
+object RL {
+	0
+}
+object OK {
+	0
+}
+object RV {
+	0
+}
+object TE {
+	0
+}
+object WW {
+	0
+}
+object HB {
+	15
+}
+object IY {
+	14
+}
+object QF {
+	0
+}
+object YZ {
+	0
+}
+object QB {
+	0
+}
+object SO {
+	0
+}
+object EB {
+	7
+}
+object VL {
+	0
+}
+object BF {
+	18
+}
+object UC {
+	0
+}
+object OQ {
+	0
+}
+object YV {
+	6
+}
+object KJ {
+	0
+}
+object QH {
+	20
+}
+object KW {
+	0
+}
+object PL {
+	0
+}
+object DQ {
+	0
+}
+object AA {
+	0
+}
+object XT {
+	0
+}
+object SZ {
+	24
+}
+object IU {
+	25
+}
+object OM {
+	0
+}
+object YX {
+	0
+}
+object SX {
+	0
+}
+object KD {
+	0
+}
+object SP {
+	0
+}
+object UY {
+	0
+}
+object XF {
+	22
+}
+object SC {
+	0
+}
+object UK {
+	0
+}
+object LW {
+	0
+}
+object FL {
+	0
+}
+object VI {
+	0
+}
+object HW {
+	0
+}
+object YI {
+	0
+}
+object HE {
+	0
+}
+object JG {
+	10
+}
+object BN {
+	0
+}
+object IF {
+	0
+}
+object JF {
+	19
+}
+object SI {
+	0
+}
+object WF {
+	0
+}
+object HQ {
+	0
+}
+object LZ {
+	5
+}
+object UH {
+	0
+}
+object CY {
+	21
+}
+object NH {
+	0
+}
+object TT {
+	0
+}
+object OH {
+	0
+}
+object EN {
+	0
+}
+object NY {
+	0
+}
+object ZB {
+	8
+}
+
+RT -- EN 
+RT -- LZ
+VB -- SZ
+VB -- BF
+AD -- EB
+AD -- JF
+RE -- QB
+RE -- IF
+RE -- XT
+RE -- WF
+RE -- KW
+RL -- DQ
+RL -- LZ
+OK -- QH
+OK -- BF
+RV -- IU
+RV -- JF
+TE -- HE
+TE -- XF
+WW -- QH
+WW -- YZ
+HB -- OM
+IY -- UH
+IY -- KW
+IY -- BN
+IY -- LW
+IY -- UY
+QF -- JF
+QF -- PL
+YZ -- JG
+QB -- SP
+SO -- QH
+SO -- SZ
+EB -- IF
+EB -- NH
+EB -- VI
+EB -- DQ
+VL -- JF
+VL -- YV
+BF -- OH
+BF -- SX
+UC -- SC
+UC -- YV
+OQ -- XT
+OQ -- AA
+YV -- YX
+YV -- TT
+YV -- NH
+KJ -- OH
+KJ -- JG
+PL -- JG
+AA -- YI
+AA -- EN
+AA -- UK
+AA -- VI
+IU -- HE
+IU -- HQ
+OM -- NY
+YX -- SI
+SX -- ZB
+KD -- XF
+KD -- LW
+SP -- XF
+UY -- UK
+XF -- NY
+SC -- LZ
+FL -- BN
+FL -- LZ
+HW -- JF
+HW -- CY
+YI -- TT
+JG -- SI
+WF -- LZ
+HQ -- UH
+
+
+
+@enduml

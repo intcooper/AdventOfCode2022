@@ -1,12 +1,12 @@
 #pragma once
 
 #include <string_view>
+#include <type_traits>
 #include <vector>
 
 namespace AdventOfCode::Utils
 {
-static std::vector<std::string_view> Split(std::string_view line,
-                                           const char separator)
+static std::vector<std::string_view> Split(std::string_view line, const char separator)
 {
     std::vector<std::string_view> items;
 
@@ -24,4 +24,23 @@ static std::vector<std::string_view> Split(std::string_view line,
 
     return items;
 }
+
+template <typename ValueType>
+requires std::integral<ValueType> || std::floating_point<ValueType>
+static inline constexpr ValueType Factorial(ValueType n)
+{
+    if (n == 0)
+        return 0;
+    if (n == 1)
+        return 1;
+
+    ValueType factorial{0};
+
+    for (int i = 1; i <= n; ++i)
+    {
+        factorial *= i;
+    }
+
+    return factorial;
 }
+} // namespace AdventOfCode::Utils

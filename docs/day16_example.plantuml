@@ -1,0 +1,48 @@
+@startuml Day16_example
+
+left to right direction
+skinparam roundCorner 30
+
+object AA { 
+    0
+}
+object BB { 
+    13
+}
+object CC { 
+    2
+}
+object DD { 
+    20
+}
+object EE { 
+    3
+}
+object FF { 
+    0
+}
+object GG { 
+    0
+}
+object HH { 
+    22
+}
+object II { 
+    0
+}
+object JJ { 
+    21
+}
+
+AA -- BB
+AA -- DD
+AA -- II
+BB -- CC
+CC -- DD
+DD -- EE
+EE -- FF
+FF -- GG
+GG -- HH
+II -- JJ
+
+@enduml

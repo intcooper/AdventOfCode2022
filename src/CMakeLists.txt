@@ -32,6 +32,7 @@ add_executable (
 	"Day13.cpp"
 	"Day14.cpp"
 	"Day15.cpp"
+	"Day16.cpp"
 )
 
 target_include_directories(AdventOfCode2022 PRIVATE ../include)
@@ -57,6 +58,7 @@ install(FILES ../res/day12input.txt DESTINATION bin)
 install(FILES ../res/day13input.txt DESTINATION bin)
 install(FILES ../res/day14input.txt DESTINATION bin)
 install(FILES ../res/day15input.txt DESTINATION bin)
+install(FILES ../res/day16input.txt DESTINATION bin)
 
 enable_testing()
 
@@ -98,4 +100,6 @@ do_test(Day14_example  AdventOfCode2022 14 ../../res/day14input_example.txt "" "
 do_test(Day14          AdventOfCode2022 14 ../../res/day14input.txt         "" "  Task1: 964\n  Task2: 32041")
 do_test(Day15_example  AdventOfCode2022 15 ../../res/day15input_example.txt "10 20" "Task1: 26\n  Task2: 56000011")
 do_test(Day15          AdventOfCode2022 15 ../../res/day15input.txt         "2000000 4000000" "Task1: 4424278\n  Task2: 10382630753392")
+do_test(Day16_example  AdventOfCode2022 16 ../../res/day16input_example.txt "" "Task1: 1651\n  Task2: 0")
+do_test(Day16          AdventOfCode2022 16 ../../res/day16input.txt         "" "Task1: 0\n  Task2: 0")
  
