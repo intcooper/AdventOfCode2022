@@ -9,10 +9,11 @@
 namespace AdventOfCode::Utils
 {
 /**
- * @brief Templated implementation of a dynamic bi-dimensional array. The
- * internal structure is a vector of vectors of ValueType.
- * Adding an element to the container invalidates all the iterators!
- * To-do: implement const iterators.
+ * @brief Templated implementation of a dynamic bi-dimensional array. 
+ * The class provides row and column iterators.
+ * The internal structure is a vector of vectors of ValueType.
+ * @remark Adding an element to the container invalidates all the iterators!
+ * @todo implement const iterators.
  */
 template <class ValueType>
 class Grid
@@ -43,18 +44,18 @@ class Grid
         m_map.rbegin()->push_back(value);
     }
 
-    size_t Rows() const
+    inline size_t Rows() const
     {
         return m_map.size();
     }
 
-    size_t Cols() const
+    inline size_t Cols() const
     {
         return m_map[0].size(); // assuming that all the rows have the same
                                 // number of columns
     }
 
-    std::optional<ValueType> Get(size_t row, size_t column) const
+    [[nodiscard]] std::optional<ValueType> Get(size_t row, size_t column) const
     {
         if ((row >= m_map.size()) || (column >= m_map[0].size()))
         {
@@ -78,11 +79,11 @@ class Grid
     {
         m_map.clear();
 
-        for (int x = 0; x < rows; ++x)
+        for (size_t x = 0; x < rows; ++x)
         {
             m_map.emplace_back();
 
-            for (int y = 0; y < columns; ++y)
+            for (size_t y = 0; y < columns; ++y)
             {
                 m_map.back().emplace_back(filler);
             }
@@ -93,18 +94,18 @@ class Grid
     {
         std::vector<std::vector<ValueType>> newMap;
 
-        for (int x = 0; x < rows; ++x)
+        for (size_t x = 0; x < rows; ++x)
         {
             newMap.emplace_back();
 
-            for (int y = 0; y < columns; ++y)
+            for (size_t y = 0; y < columns; ++y)
             {
                 newMap.back().emplace_back(filler);
             }
         }
 
-        int minY = (std::min)(newMap.size(), m_map.size());
-        int minX = (std::min)(newMap[0].size(), m_map[0].size());
+        int minY = static_cast<int>((std::min)(newMap.size(), m_map.size()));
+        int minX = static_cast<int>((std::min)(newMap[0].size(), m_map[0].size()));
         int offsetY = 0; // std::abs(static_cast<int>(newMap.size()) -
                          // static_cast<int>(m_map.size())) / 2; // centered
         int offsetX = std::abs(static_cast<int>(newMap[0].size()) - static_cast<int>(m_map[0].size())) / 2; // centered

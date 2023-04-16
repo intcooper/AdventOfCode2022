@@ -2,8 +2,8 @@
 #include <array>
 #include <iostream>
 #include <optional>
-#include <stdint.h>
 #include <string>
+#include <vcruntime.h>
 
 //#define PRINTMAP
 
@@ -139,9 +139,9 @@ void Day14::ParseInputFile()
 
     m_map.SetSize(m_maxPoint.y - m_minPoint.y + 1, m_maxPoint.x - m_minPoint.x + 1, '.');
 
-    for (auto& p : points)
+    for (const auto& p : points)
     {
-        int i = 0;
+        size_t i = 0;
 
         while (i < p.size() - 1)
         {

@@ -35,9 +35,9 @@ class Rope
         m_visited.emplace(0, 0);
     }
 
-    constexpr void MoveHead(Point d, int steps)
+    constexpr void MoveHead(Point d, uint32_t steps)
     {
-        for (size_t i = 0; i < steps; i++)
+        for (uint32_t i = 0; i < steps; i++)
         {
             m_head += d;
 

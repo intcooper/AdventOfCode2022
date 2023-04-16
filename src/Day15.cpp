@@ -2,7 +2,6 @@
 #include "utils/Line.hpp"
 #include "utils/Helpers.hpp"
 #include <algorithm>
-#include <stdint.h>
 #include <string>
 
 namespace AdventOfCode

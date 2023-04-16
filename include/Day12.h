@@ -3,7 +3,6 @@
 #include "DailyTask.h"
 #include "utils/Point.hpp"
 
-#include <stdint.h>
 #include <string>
 #include <vector>
 

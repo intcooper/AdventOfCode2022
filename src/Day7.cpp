@@ -34,14 +34,14 @@ void Day7::Task2()
         ParseInputFile();
     }
 
-    auto dirs = m_fsRoot.FindDirectoriesOfMaxSize(INT_MAX);
+    auto dirs = m_fsRoot.FindDirectoriesOfMaxSize(std::numeric_limits<int>::max());
 
     auto sizeOfRoot = dirs.find("/")->second;
 
     auto freeSpace = 70'000'000 - sizeOfRoot;
     auto toBeFreed = 30'000'000 - freeSpace;
 
-    uint32_t sizeOfDir = UINT32_MAX;
+    uint32_t sizeOfDir = std::numeric_limits<uint32_t>::max();
 
     for (const auto& dir : dirs)
     {

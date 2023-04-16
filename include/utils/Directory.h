@@ -22,12 +22,12 @@ class Directory
     Directory* GetDirectory(const std::string& name) const;
     bool HasChildren() const;
     
-    inline const std::vector<std::unique_ptr<Directory>>& GetDirectories() const
+    [[nodiscard]] inline const std::vector<std::unique_ptr<Directory>>& GetDirectories() const
     {
         return m_directories;
     }
 
-    inline const std::vector<std::unique_ptr<File>>& GetFiles() const
+    [[nodiscard]] inline const std::vector<std::unique_ptr<File>>& GetFiles() const
     {
         return m_files;
     }

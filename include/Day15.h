@@ -4,7 +4,6 @@
 #include "utils/Grid.hpp"
 #include "utils/Point.hpp"
 
-#include <climits>
 #include <map>
 #include <string>
 
@@ -45,8 +44,8 @@ class Day15 : public DailyTask
     virtual void Task2() override;
 
   private:
-    Utils::Point m_minPoint{INT_MAX, INT_MAX};
-    Utils::Point m_maxPoint{INT_MIN, INT_MIN};
+    Utils::Point m_minPoint{std::numeric_limits<int>::max(), std::numeric_limits<int>::max()};
+    Utils::Point m_maxPoint{std::numeric_limits<int>::min(), std::numeric_limits<int>::min()};
     std::map<Utils::Point, Utils::Point> m_sensorsAndBeacons;
 
     void ParseInputFile();

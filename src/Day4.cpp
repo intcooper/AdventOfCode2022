@@ -10,7 +10,7 @@ struct ElfAssignment
     uint32_t start;
     uint32_t end;
 
-    ElfAssignment(std::string_view parts)
+    explicit ElfAssignment(std::string_view parts)
     {
         auto assignmentparts = Utils::Split(parts, '-');
         start = std::stoi(assignmentparts[0].data());

@@ -31,7 +31,7 @@ class Line
      * @param other The line to intersect with.
      * @return constexpr Point
      */
-    inline constexpr Point Intersect(const Line& other) const
+    [[nodiscard]] inline constexpr Point Intersect(const Line& other) const
     {
         // line a : y = (ma * x) - (ma * x1a) + y1a
         // line b : y = (mb * x) - (mb * x1b) + y1b
@@ -51,7 +51,7 @@ class Line
         const auto xi = (y1b - (mb * x1b) + (ma * x1a) - y1a) / (ma - mb);
         const auto yi = (ma * xi) - (ma * x1a) + y1a;
 
-        return Point(xi, yi);
+        return Point(static_cast<int>(xi), static_cast<int>(yi));
     }
 
   private:

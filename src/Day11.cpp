@@ -2,7 +2,6 @@
 #include <algorithm>
 #include <map>
 #include <numeric>
-#include <stdint.h>
 
 namespace AdventOfCode
 {
@@ -51,7 +50,7 @@ void Day11::RunTask(int numOfRounds,
         inspections.emplace_back(m.GetTotalInspections());
     }
 
-    std::sort(inspections.begin(), inspections.end(), std::greater<int>());
+    std::sort(inspections.begin(), inspections.end(), std::greater<uint64_t>());
     m_result = std::to_string(inspections[0] * inspections[1]);
 }
 
@@ -124,7 +123,7 @@ void Day11::ParseInputFile()
             auto subparts = Utils::Split(parts[1], ' ');
             onTestPositive = std::bind(
                 [& m_monkeys = m_monkeys](auto worry, auto monkeyId) {
-                    m_monkeys[monkeyId].AddItem(worry);
+                    m_monkeys[monkeyId].AddItem(static_cast<int>(worry));
                 },
                 std::placeholders::_1, std::stoi(subparts[4].data()));
 
@@ -136,7 +135,7 @@ void Day11::ParseInputFile()
             auto subparts = Utils::Split(parts[1], ' ');
             onTestNegative = std::bind(
                 [& m_monkeys = m_monkeys](auto worry, auto monkeyId) {
-                    m_monkeys[monkeyId].AddItem(worry);
+                    m_monkeys[monkeyId].AddItem(static_cast<int>(worry));
                 },
                 std::placeholders::_1, std::stoi(subparts[4].data()));
 

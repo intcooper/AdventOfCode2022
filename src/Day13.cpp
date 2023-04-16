@@ -90,7 +90,7 @@ void Day13::GetPacket(Utils::Packet* root, std::string_view text, int& charIndex
 {
     std::string value;
 
-    while (charIndex < text.size())
+    while (charIndex < static_cast<int>(text.size()))
     {
         const auto currentChar = text[charIndex];
         if (currentChar == '[')
@@ -100,7 +100,7 @@ void Day13::GetPacket(Utils::Packet* root, std::string_view text, int& charIndex
 
             root->AppendList(newRoot);
 
-            if (charIndex >= text.size() - 1)
+            if (charIndex >= static_cast<int>(text.size()) - 1)
             {
                 return;
             }

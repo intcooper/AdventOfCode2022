@@ -8,7 +8,7 @@ namespace AdventOfCode::Utils
 class File
 {
   public:
-    File(std::string name, uint32_t size)
+    File(std::string_view name, uint32_t size)
         : m_name{name}
         , m_size{size}
     {

@@ -4,7 +4,6 @@
 #include <array>
 #include <map>
 #include <ranges>
-#include <stdint.h>
 
 namespace AdventOfCode
 {
@@ -23,7 +22,7 @@ void Day12::Task1()
 
 void Day12::Task2()
 {
-    uint32_t shortestPathLength{UINT32_MAX};
+    uint32_t shortestPathLength{std::numeric_limits<uint32_t>::max()};
 
     ParseInputFile();
 
@@ -33,7 +32,7 @@ void Day12::Task2()
         if ((shortestPath.size() > 0) &&
             (shortestPathLength > shortestPath.size()))
         {
-            shortestPathLength = shortestPath.size();
+            shortestPathLength = static_cast<uint32_t>(shortestPath.size());
         }
     }
 
@@ -47,19 +46,14 @@ std::vector<Utils::Point> Day12::Explore(const Utils::Point& start, const Utils:
 
     struct Node
     {
-        Node(Utils::Point point, Utils::Point parent, int f, int g, int h)
-            : point(std::move(point))
-            , parent(std::move(parent))
-            , f(f)
-            , g(g)
-            , h(h)
+        Node(const Utils::Point& point, const Utils::Point& parent, int f, int g, int h)
+            : point{point}
+            , parent{parent}
+            , f{f}
+            , g{g}
+            , h{h}
         {
         }
-
-        Node(const Node&) = default;
-        Node(Node&&) = default;
-        Node& operator=(const Node&) = default;
-        Node& operator=(Node&&) = default;
 
         Utils::Point point;
         Utils::Point parent;
@@ -79,12 +73,12 @@ std::vector<Utils::Point> Day12::Explore(const Utils::Point& start, const Utils:
 
     while (!open.empty())
     {
-        uint32_t minimumDistance{UINT32_MAX};
+        uint32_t minimumDistance{std::numeric_limits<uint32_t>::max()};
         Utils::Point minimumDistancePoint;
 
         for (const auto& p : open)
         {
-            if (p.second.f < minimumDistance)
+            if (static_cast<uint32_t>(p.second.f) < minimumDistance)
             {
                 minimumDistance = p.second.f;
                 minimumDistancePoint = p.first;
@@ -122,8 +116,8 @@ std::vector<Utils::Point> Day12::Explore(const Utils::Point& start, const Utils:
             next += d;
 
             // check whether the next point has valid coordinates
-            if (!((next.y >= 0) && (next.y < m_map.size()) && (next.x >= 0) &&
-                  (next.x < m_map[0].size())))
+            if (!((next.y >= 0) && (next.y < static_cast<int>(m_map.size())) && (next.x >= 0) &&
+                  (next.x < static_cast<int>(m_map[0].size()))))
             {
                 continue;
             }
@@ -143,8 +137,7 @@ std::vector<Utils::Point> Day12::Explore(const Utils::Point& start, const Utils:
                 nextChar = 'z';
             }
 
-            if ((static_cast<int>(nextChar) - static_cast<int>(currentChar)) >
-                1)
+            if ((static_cast<int>(nextChar) - static_cast<int>(currentChar)) > 1)
             {
                 continue;
             }
@@ -180,7 +173,7 @@ void Day12::ParseInputFile()
     m_map.clear();
     m_candidateStartPos.clear();
 
-    uint8_t currentRow;
+    uint8_t currentRow{0};
 
     for (std::string line; std::getline(m_inputFile, line);)
     {
@@ -188,19 +181,19 @@ void Day12::ParseInputFile()
         auto pos = std::find(line.begin(), line.end(), 'S');
         if (pos != line.end())
         {
-            m_startPos = Utils::Point(pos - line.begin(), currentRow);
+            m_startPos = Utils::Point(static_cast<int>(pos - line.begin()), currentRow);
         }
 
         pos = std::find(line.begin(), line.end(), 'E');
         if (pos != line.end())
         {
-            m_endPos = Utils::Point(pos - line.begin(), currentRow);
+            m_endPos = Utils::Point(static_cast<int>(pos - line.begin()), currentRow);
         }
 
         pos = std::find(line.begin(), line.end(), 'a');
         if (pos != line.end())
         {
-            m_candidateStartPos.emplace_back(pos - line.begin(), currentRow);
+            m_candidateStartPos.emplace_back(static_cast<int>(pos - line.begin()), currentRow);
         }
 
         currentRow++;

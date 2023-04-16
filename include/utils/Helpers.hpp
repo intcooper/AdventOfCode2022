@@ -29,14 +29,12 @@ template <typename ValueType>
 requires std::integral<ValueType> || std::floating_point<ValueType>
 static inline constexpr ValueType Factorial(ValueType n)
 {
-    if (n == 0)
-        return 0;
-    if (n == 1)
-        return 1;
+    if (n <= 1)
+        return n;
 
-    ValueType factorial{0};
+    ValueType factorial{1};
 
-    for (int i = 1; i <= n; ++i)
+    for (ValueType i = 2; i <= n; ++i)
     {
         factorial *= i;
     }
