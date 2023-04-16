@@ -4,6 +4,7 @@
 #include <array>
 #include <map>
 #include <ranges>
+#include <limits>
 
 namespace AdventOfCode
 {
