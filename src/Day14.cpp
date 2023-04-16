@@ -3,7 +3,6 @@
 #include <iostream>
 #include <optional>
 #include <string>
-#include <vcruntime.h>
 
 //#define PRINTMAP
 
