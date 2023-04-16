@@ -18,11 +18,11 @@ struct GridTestsSuiteFixture
     {
         BOOST_TEST_MESSAGE("setup fixture");
 
-        for (int j = 0; j < GridRows; ++j)
+        for (uint32_t j = 0; j < GridRows; ++j)
         {
             grid.AppendRow();
 
-            for (int i = 0; i < GridColumns; ++i)
+            for (uint32_t i = 0; i < GridColumns; ++i)
             {
                 grid.AppendValue(i + (10 * j));
             }
